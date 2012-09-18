@@ -1,0 +1,44 @@
+body{
+	color: #000000;
+	margin: 0;
+	padding: 0;
+	min-width: 669px;
+	max-width: 2000px;
+	font-family: helvetica, arial, verdana;
+	
+}
+#header{
+	background: red;
+	padding: 1em 0em 1em 1em;
+}
+#header h2{
+	font-variant: small-caps;
+}
+
+#navigation{
+	height: 8em;
+	width: 10em;
+	float: right;
+	background: red;
+	padding: 0em 0em 0em 0em;
+	margin: 0em;
+	border-bottom-left-radius: 10% 10%;
+}
+#navigation ul{
+	list-style: none;
+}
+
+li{
+	color: ;
+}
+#content{
+	background: #ffffff;
+	max-width:30em;
+	margin: 0;
+	padding:0;
+}
+.active{
+	text-decoration: underline;
+	font-weight: bold;
+
+}
