@@ -1,2 +1,3 @@
 environment.php
 logs/*
+.DS_store
