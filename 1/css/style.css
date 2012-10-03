@@ -5,13 +5,11 @@ body{
 	margin: -1em 2em 1em 1em;
 	padding: 0;
 	font-family: helvetica, arial, verdana;
-	max-width:50em;	
+	max-width:60em;	
 	min-width:44em;
-
 }
 
 /* HEADER */
-
 #header{
 	background: #ffffff;
 	padding: 1em 0em 1em 1em;
@@ -27,12 +25,11 @@ body{
 	margin: 1em 1em 1em .8em;
 }
 
-
-
 /* NAVIGATION */
 #navigation{
 	font-size: 1em;
 	font-variant: small-caps;
+	font-weight: 600;
 	padding: 0em 0em 0em 0em;
 	margin: 0em 2em 1em 0em;
 	color: #ffffff;
@@ -45,33 +42,23 @@ body{
 li{
 	margin: 0em 2em 0em 0em;
 	padding: .5em .5em 0em .5em;
-	border-bottom: 1em solid black;
-	background: #ffffff;
-	color: #ffffff;
+	border-bottom: 1em solid;
 }
 .active, li:hover{
 	color: #000000;
-	background:#ffffff;
 	border-top:.5em solid;
 }
 
 #nav1{
-	border-bottom: 1em solid;
 	border-color: #000000;
 }
-
-
 #nav2{
-	border-bottom: 1em solid;
 	border-color: #FFF700;
 }
 #nav3{
-	border-bottom: 1em solid; 
-	border-color:#FF0079;
-
+	border-color: #FF0079;
 }
 #nav4{
-	border-bottom: 1em solid;
 	border-color: #0096FF;
 }
 
@@ -98,11 +85,15 @@ span{
 	font-size: .8em;
 	text-align: center;
 	background: #ffffff;
-	margin: 4em 0em 0em 0em;
+	margin: 6em 0em 0em 0em;
 }
 
 /*LINKS */
-a {
+.active a {
+	text-decoration:none;
 	color: #FF0079;
+}
 
+a:hover{
+	text-decoration:underline;
 }
