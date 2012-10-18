@@ -1,3 +1,4 @@
 environment.php
 logs/*
-.DS_store
+*.DS_Store
+.DS_Store
