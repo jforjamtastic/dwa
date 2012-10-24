@@ -7,13 +7,17 @@ class users_controller extends base_controller {
 	}
 	
 	public function index() {
-		echo "welcome to the users department";
+		Router::redirect("/");	
 	}
 	
 	public function signup() {
 		$this->template->content = View::instance("v_users_signup");
 		
+		$client_files = Array("/css/style.css", "");
+		$this->template->client_files = Utils::load_client_files($client_files);
+				
 		echo $this->template;
+
 	}
 	
 	public function p_signup(){
