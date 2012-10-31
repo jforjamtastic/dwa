@@ -24,16 +24,17 @@ class users_controller extends base_controller {
 		#what data was printed
 		print_r($_POST);
 		
-				
-		$_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']); #hashes password
-		$_POST['created'] = Time::now(); #this returned the time stamp
-		$_POST['modified']= Time::now(); #timestamp 
+		$_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']); 	#hashes password
 		$_POST['token'] = sha1(TOKEN_SALT.$_POST['email'].Utils::generate_random_string());
+		$_POST['created'] = Time::now(); 								#this returned the time stamp
+		$_POST['modified']= Time::now(); 								#timestamp 
+		
+		
 		
 		#put the data into db
 		DB::instance(DB_NAME)->insert('users', $_POST); #inserts form data to DB
 		
-		echo "You are Registered";
+		echo "You are Registered!";
 		
 		
 	}
