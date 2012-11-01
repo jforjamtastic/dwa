@@ -8,6 +8,23 @@ body {
 	min-width: 30em;
 }
 
+
+h1{
+	font-family: "Merienda One", Serif;
+	font-weight: 400;
+	text-decoration: underline;
+	padding: 0em;
+	margin: .5em 0em .25em 4em;
+	display:inline;
+}
+
+#content {
+	margin: 0em 2em 0em 2em;
+	width: 25em;
+	
+	
+}
+####### headers#######
 #header{
 	height: 3em;
 	margin: 0em;
@@ -21,15 +38,16 @@ body {
 	color:#ffffff;
 
 }
-
-h1{
-	font-family: "Merienda One", Serif;
-	font-weight: 400;
-	text-decoration: underline;
-	padding: 0em;
-	margin: .5em 0em .25em 4em;
-	display:inline;
+#header a{
+	color:#ffffff;
+	
 }
+
+#header a:visited{
+	color:white;	
+	
+}
+
 #header ul{
 	float: right;
 	margin: 0em 5em 0em 0em;
@@ -46,22 +64,9 @@ h1{
 	list-style:none;
 	display: inline;
 }
-#content {
-	margin: 0em 2em 0em 2em;
-	width: 25em;
-	
-	
-}
 
-a{
-	color:#ffffff;
-	
-}
 
-a:visited{
-	color:white;	
-	
-}
+
 span{
 	color:#d16d20;
 	

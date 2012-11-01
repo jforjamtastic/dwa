@@ -10,10 +10,13 @@ class users_controller extends base_controller {
 		Router::redirect("/");	
 	}
 	
+	
+	
+	
 	public function signup() {
 		$this->template->content = View::instance("v_users_signup");
 		
-		$client_files = Array("/css/style.css", "http://ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.min.js");
+		$client_files = Array("http://ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.min.js");
 		$this->template->client_files = Utils::load_client_files($client_files);
 				
 		echo $this->template;
@@ -46,6 +49,8 @@ class users_controller extends base_controller {
 	}
 	
 	public function p_login(){
+		$_POST = DB::instance(DB_NAME)->sanitize($_POST);
+		
 		$_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);
 		
 		$q = "SELECT token
@@ -68,10 +73,21 @@ class users_controller extends base_controller {
 	}
 	
 	public function logout() {
-		echo "display the logout page";
+		$this->template->content = View::instance("v_users_logout");
+		
+		$new_token = sha1(TOKEN_SALT.$this->user->email.Utils::generate_random_string());
+		
+		$data = Array("token" => $new_token);
+		
+		DB::instance(DB_NAME)->update("users", $data, "WHERE token = '".$this->user->token."'");
+		
+		setcookie("token", "", strtotime('-1 year'), '/');
+		
+		echo $this->template;
+		
 	}
 	
-	public function profile($user_name){
+	public function profile($user_name = NULL){
 		if(!$this->user){
 			echo "Members only";
 			return false;
@@ -84,10 +100,6 @@ class users_controller extends base_controller {
 			# Create the view
 			$this->template->content = View::instance("v_users_profile");
 			$this->template->title = "Profile for ".$user_name;
-			
-			# Add client files
-			$client_files = Array("/css/users.css", "/js/users.js");
-			$this->template->client_files = Utils::load_client_files($client_files);
 			
 			# Pass Content
 			$this->template->content->user_name = $user_name;

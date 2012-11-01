@@ -1,11 +1,3 @@
-<div id="header">
-	<a href="#" title="the Timeline"><h1> the Timeline</h1></a>
-	<ul>
-		<li><a href="/users/login" title="login">login</a></li>
-		<li class="active"><a href="/users/signup" title"signup">signup</a></li>
-	</ul>
-</div>
-
 <div id="content">
 	<form method='Post' action='/users/p_signup'>
 		<fieldset>

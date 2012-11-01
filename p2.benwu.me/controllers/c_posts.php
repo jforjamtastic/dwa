@@ -19,26 +19,14 @@ class posts_controller extends base_controller {
 		$this->template->title 	 = 'Posts';
 		
 		#connections
-		$q = "SELECT *
-			FROM users_users
-			WHERE user_id =".#this->user->user_id;
-			"
-		$connections = DB::instance(DB_name_->select_rows($q);
-		
-		$connection_string = "";
-		
-		foreach ($connections as $key => $v){
-			$connections_string .= $v['user_id'].",";
-		}
-		
-		$connection_string = substr($connection_string, 0, -1);
-		
-		$q = "SELECT *
-			FROM posts
-			JOIN users USING(user_id)
-			WHERE post.user_id IN (".$connections_string.")
-			";
-		
+			$q = "SELECT posts.*, users.first_name, users.last_name
+					FROM posts
+					LEFT JOIN users
+					ON posts.user_id = users.user_id
+					LEFT JOIN users_users
+					ON users.user_id = users_users.user_id_followed
+					WHERE users_users.user_id = ".$this->user->user_id;
+							
 		$posts = DB::instance(DB_NAME)->select_rows($q);
 		//print_r($posts);
 		
@@ -96,7 +84,7 @@ class posts_controller extends base_controller {
 		
 		//echo Debug::dump($connections,"connections");
 		
-		$this->template->content->conncetions = $connections;
+		$this->template->content->connections = $connections;
 		$this->template->content->users = $users;
 		
 		echo $this->template;
@@ -113,16 +101,16 @@ class posts_controller extends base_controller {
 		DB::instance(DB_NAME)->insert('users_users', $data);
 		
 		
-		Router::redirect("/post/users");
+		Router::redirect("/posts/users");
 	}
 	
 	public function unfollow ($user_id_followed = NULL){
-		$where_condition = "WHERE user_id_followed =".$user_id_followed.
-							"AND user_id= ".$this->user->user_id;
+		$where_condition = "WHERE user_id_followed =".$user_id_followed."
+							AND user_id= ".$this->user->user_id;
 
-		DB::instance(DB_NAME)->delete('users_users');
+		DB::instance(DB_NAME)->delete("users_users", $where_condition);
 		
-		Router::redirect("post/users");
+		Router::redirect("/posts/users");
 	}
 	
 

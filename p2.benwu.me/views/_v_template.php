@@ -17,8 +17,26 @@
 </head>
 
 <body>	
-	<?=$header;?>
-	<?=$content;?> 
 
+	<div id="header">
+		<a href="#" title="title"><h1> the Timeline</h1></a>
+		<ul>
+		<? if (!$user) { ?>
+			<li><a href="/users/login" title="login">login</a></li>
+			<li><a href="/users/signup" title="signup">signup</a></li>
+		<? } 
+		else {?>
+		<!--	<li><a href="/users/profile/<? $user?>" 		title="profile">profile</a></li> -->
+			<li><a href="/posts/" title='posts'>timeLine</a></li>
+			<li><a href="/posts/users" title='following'>following</a></li>
+			<li><a href="/posts/add" title='add'>compose</a></li>
+			<li><a href="/users/logout" title="logout">Signout</a></li>
+			
+		<? } ?>
+		</ul>
+	</div>
+	<div id="content">
+		<?=$content;?> 
+	</div>
 </body>
 </html>
