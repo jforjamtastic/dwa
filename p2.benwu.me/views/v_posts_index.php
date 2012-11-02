@@ -15,7 +15,7 @@
 	<? } ?>
 			<span><?=$post['first_name']?> <?=$post['last_name']?></span>
 			<p class='text'><?=$post['content']?></p>
-			<p class='created'><?= Time::display($post['created'], null, null)?></p>
+			<p class='created'><?= Time::display($post['created'], null, 'America/New_York')?></p>
 		</div>
 	</div>
 	
