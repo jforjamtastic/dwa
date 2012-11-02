@@ -25,7 +25,8 @@ class posts_controller extends base_controller {
 					ON posts.user_id = users.user_id
 					LEFT JOIN users_users
 					ON users.user_id = users_users.user_id_followed
-					WHERE users_users.user_id = ".$this->user->user_id;
+					WHERE users_users.user_id = ".$this->user->user_id."
+					ORDER BY posts.created DESC";
 							
 		$posts = DB::instance(DB_NAME)->select_rows($q);
 		//print_r($posts);

@@ -16,7 +16,8 @@ class users_controller extends base_controller {
 	public function signup() {
 		$this->template->content = View::instance("v_users_signup");
 		
-		$client_files = Array("/css/forms.css","http://ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.min.js");
+		$client_files = Array("/css/forms.css",
+								"http://ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.min.js");
 		$this->template->client_files = Utils::load_client_files($client_files);
 				
 		echo $this->template;
