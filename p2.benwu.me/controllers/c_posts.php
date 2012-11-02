@@ -44,6 +44,9 @@ class posts_controller extends base_controller {
 		# set up the view
 		$this->template->content = View::instance("v_posts_add");
 		$this->template->title = "Add a new post";
+		
+		$client_files = Array("/css/forms.css","http://ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.min.js");
+		$this->template->client_files = Utils::load_client_files($client_files);
 
 		#render the view
 		echo $this->template;		

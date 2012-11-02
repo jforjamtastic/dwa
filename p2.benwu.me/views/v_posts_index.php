@@ -1,10 +1,15 @@
+<script>
+	$(document.ready(function (){
+		$('a[title="posts"]').addClass("active");
+	});
+</script>
+
 <? foreach($posts as $key => $post): ?>
 	<div class='post'>
-		<div class="post-background"></div>
-		<div class="post-text">
+		<div class="glow-bubble">
 			<span><?=$post['first_name']?> <?=$post['last_name']?></span>
-			<br />
-			<?=$post['content']?>
+			<p class='text'><?=$post['content']?></p>
+			<p class='created'><?= Time::display($post['created'], null, null)?></p>
 		</div>
 	</div>
 	

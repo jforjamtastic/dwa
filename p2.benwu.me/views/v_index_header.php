@@ -1,5 +1,5 @@
 <div id="header">
-	<a href="#" title="the Timeline"><h1> the Timeline</h1></a>
+	
 	<ul>
 	<? if (!$user) { ?>
 		<li><a href="/users/login" title="login">login</a></li>
@@ -11,4 +11,5 @@
 	
 	<? } ?>
 	</ul>
+	<a href="#" title="the Timeline"><h1> the Timeline</h1></a>
 </div>
