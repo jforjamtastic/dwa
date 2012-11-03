@@ -2,7 +2,7 @@
 
 
 <div id="login">
-	<div class="glow-bubble">
+	<div class="grey-bubble">
 		<h2>Log back in?</h2>
 		<form method='Post' action='/users/p_login'>
 		

@@ -1,5 +1,5 @@
 <div id="signup">	
-	<div class='glow-bubble'>
+	<div class='grey-bubble'>
 		<form method='Post' action='/users/p_signup'>
 		
 			<h2>Signup</h2>
@@ -19,7 +19,7 @@
 			<input type='password' name='password' id='email'>
 			<br /><br />
 			
-			<input type='submit' value='submit'>
+			<input type='submit' value='submit' class='submit'>
 			<br /><br />
 		
 		

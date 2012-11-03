@@ -15,6 +15,8 @@ class users_controller extends base_controller {
 	
 	public function signup() {
 		$this->template->content = View::instance("v_users_signup");
+		$this->template->sidebar = View::instance("v_login_text");
+
 		
 		$client_files = Array("/css/forms.css",
 								"http://ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.min.js");
@@ -26,7 +28,7 @@ class users_controller extends base_controller {
 	
 	public function p_signup(){
 		#what data was printed
-		print_r($_POST);
+		//print_r($_POST);
 		
 		$_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']); 	#hashes password
 		$_POST['token'] = sha1(TOKEN_SALT.$_POST['email'].Utils::generate_random_string());
@@ -38,19 +40,25 @@ class users_controller extends base_controller {
 		#put the data into db
 		DB::instance(DB_NAME)->insert('users', $_POST); #inserts form data to DB
 		
-		echo "You are Registered!";
+		Router::redirect("/");
 		
 		
 	}
 	
 	public function login() {
+		if(!$this->user){
 		$this->template->content = View::instance("v_users_login");
+		$this->template->sidebar = View::instance("v_login_text");
 		
 		$client_files = Array("/css/forms.css","http://ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.min.js");
 		$this->template->client_files = Utils::load_client_files($client_files);
 		
 		
 		echo $this->template;	
+		}
+		else {
+			Router::redirect('/posts/');
+		}
 	}
 	
 	public function p_login(){
@@ -71,7 +79,7 @@ class users_controller extends base_controller {
 		}
 		else{
 			setcookie("token", $token, strtotime('+2 weeks'), "/");
-			Router::redirect("/");
+			Router::redirect("/posts/");
 			
 		}
 	
@@ -79,6 +87,7 @@ class users_controller extends base_controller {
 	
 	public function logout() {
 		$this->template->content = View::instance("v_users_logout");
+
 		
 		$new_token = sha1(TOKEN_SALT.$this->user->email.Utils::generate_random_string());
 		
@@ -88,6 +97,7 @@ class users_controller extends base_controller {
 		
 		setcookie("token", "", strtotime('-1 year'), '/');
 		
+
 		
 		$client_files = Array("/css/forms.css","http://ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.min.js");
 		$this->template->client_files = Utils::load_client_files($client_files);
@@ -108,10 +118,10 @@ class users_controller extends base_controller {
 		else {		
 			# Create the view
 			$this->template->content = View::instance("v_users_profile");
-			$this->template->title = "Profile for ".$user_name;
+			$this->template->title = "Profile for ".$this->user-first_name;
 			
 			# Pass Content
-			$this->template->content->user_name = $user_name;
+			//$this->template->content->user_name = $user_name;
 			
 			# Render the View
 			echo $this->template;

@@ -5,16 +5,15 @@ legend{
 	font-size: 1.8 em;	
 }
 
-#signup{
-	margin: 1em;
-	padding: 2em;
-	width: 18em;
+#signup, #login{
+	margin: 1em 1em 0em 1em;
+	padding: 1em 2em 0em 2em;
+	width: 85%;
+	max-width: 35em;
 }
 
 #login{
-	margin: 1em;
-	padding: 2em;
-	width: 18em;	
+	height: 14em;	
 }
 
 
@@ -32,15 +31,18 @@ textarea.add{
 }
 
 .submit {
+	float: right;
+	width: 8em;
 }
 
 input{
 	display:block;
 	border: 1px solid;
+	width: 60%;
 	box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
 	}
 
-.form-bubble{
+.grey-bubble{
 	background-color: #3A4349;
 	border-radius: .5em .5em;
 	box-shadow: 0px 0px 10px #000000;

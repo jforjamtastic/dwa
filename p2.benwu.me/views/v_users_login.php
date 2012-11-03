@@ -1,5 +1,5 @@
 <div id="login">
-	<div class="glow-bubble">
+	<div class="grey-bubble">
 		<form method='Post' action='/users/p_login'>
 			<legend>Login</legend>
 			<label for="email">email</label><br />
@@ -9,8 +9,10 @@
 			<input type='password' name='password'>
 			<br /><br />
 			
-			<input type='submit' value='login'>
+			<input type='submit' value='login' class='submit'>
 		
 		</form>
+		
 	</div>
 </div>
+<?=$subview?>
