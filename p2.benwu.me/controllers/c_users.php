@@ -35,12 +35,10 @@ class users_controller extends base_controller {
 		$_POST['created'] = Time::now(); 								#this returned the time stamp
 		$_POST['modified']= Time::now(); 								#timestamp 
 		
-		
-		
 		#put the data into db
 		DB::instance(DB_NAME)->insert('users', $_POST); #inserts form data to DB
 		
-		Router::redirect("/");
+		Router::redirect("/users/login/");
 		
 		
 	}
@@ -48,7 +46,7 @@ class users_controller extends base_controller {
 	public function login() {
 		if(!$this->user){
 		$this->template->content = View::instance("v_users_login");
-		$this->template->sidebar = View::instance("v_login_text");
+		$this->template->sidebar = View::instance("v_signup_text");
 		
 		$client_files = Array("/css/forms.css","http://ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.min.js");
 		$this->template->client_files = Utils::load_client_files($client_files);
@@ -86,7 +84,8 @@ class users_controller extends base_controller {
 	}
 	
 	public function logout() {
-		$this->template->content = View::instance("v_users_logout");
+		$this->template->content = View::instance("v_users_login");
+		$this->template->sidebar = View::instance("v_users_logout");
 
 		
 		$new_token = sha1(TOKEN_SALT.$this->user->email.Utils::generate_random_string());

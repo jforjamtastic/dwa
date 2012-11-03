@@ -31,10 +31,14 @@ class posts_controller extends base_controller {
 							
 		$posts = DB::instance(DB_NAME)->select_rows($q);
 		//print_r($posts);
-		
+		$user_id = $this->user->user_id;
 		
 		#pass data to the view
 		$this->template->content->posts = $posts;
+		$this->template->content->user_id = $user_id;
+		
+		//echo Debug::dump($user_id);
+		//echo Debug::dump($posts);
 		
 		#renderman
 		echo $this->template;
@@ -47,9 +51,6 @@ class posts_controller extends base_controller {
 		$this->template->content = View::instance("v_posts_add");
 		$this->template->title = "Add a new post";
 		
-		$client_files = Array("/css/forms.css","http://ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.min.js");
-		$this->template->client_files = Utils::load_client_files($client_files);
-
 		#render the view
 		echo $this->template;		
 	}
@@ -74,7 +75,8 @@ class posts_controller extends base_controller {
 	public function users(){
 		#controls who you follow
 		
-		$this->template->content = View::instance("v_posts_users");
+		#$this->template->content = View::instance("v_posts_following");	##	
+		$this->template->sidebar = View::instance("v_posts_users");
 		
 		$q = "SELECT *
 			FROM users";
@@ -89,8 +91,8 @@ class posts_controller extends base_controller {
 		
 		//echo Debug::dump($connections,"connections");
 		
-		$this->template->content->connections = $connections;
-		$this->template->content->users = $users;
+		$this->template->sidebar->connections = $connections;
+		$this->template->sidebar->users = $users;
 		
 		echo $this->template;
 		

@@ -21,10 +21,7 @@ class index_controller extends base_controller {
 			$this->template->title = "The Timeline";
 	
 		# If this view needs any JS or CSS files, add their paths to this array so they will get loaded in the head
-			$client_files = Array(
-						"/css/style.css", 
-						"/js/users.js"
-	                    );
+			$client_files = Array();
 	    
 	    	$this->template->client_files = Utils::load_client_files($client_files);   
 	      		

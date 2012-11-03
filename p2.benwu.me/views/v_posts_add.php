@@ -1,8 +1,14 @@
+<script>
+	$(document).ready(function(){
+    	$(".validate").validate();
+    });
+</script>
+
 <div id="add-post">
 	<div class="grey-bubble">
-		<form method='POST' action='/posts/p_add'>
+		<form method='POST' class='validate' action='/posts/p_add'>
 			<legend> Add a post</legend><br />
-			<textarea class='add' name='content'></textarea>
+			<textarea id='add' class='required' name='content'></textarea>
 			<br /><br />
 		<input type='submit' value='Post' class='submit'>
 		</form>

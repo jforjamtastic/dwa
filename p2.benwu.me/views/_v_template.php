@@ -8,6 +8,7 @@
 	<!-- JS -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+	<script src="//ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
 	
 	<!== CSS ==>
 	<link rel='stylesheet'
@@ -30,6 +31,11 @@
 			});
 		});
 	</script>
+	<script>
+	$(document).ready(function(){
+    	$(".validate").validate();
+    });
+    </script>
 	
 </head>
 
@@ -62,7 +68,7 @@
 			<?=$sidebar;?>
 		</div>
 		<div id="footer">
-			<span> version .15</span>
+			<span> version .23</span>
 		</div>
 	</div>
 </body>

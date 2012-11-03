@@ -1,12 +1,12 @@
 <div id="login">
 	<div class="grey-bubble">
-		<form method='Post' action='/users/p_login'>
-			<legend>Login</legend>
+		<form method='Post' class='validate' action='/users/p_login'>
+			<h2>Login</h2>
 			<label for="email">email</label><br />
-			<input type='text' name='email'>
+			<input type='text' class='required' name='email'>
 			<br /><br />
 			password<br />
-			<input type='password' name='password'>
+			<input type='password' class='required' name='password'>
 			<br /><br />
 			
 			<input type='submit' value='login' class='submit'>

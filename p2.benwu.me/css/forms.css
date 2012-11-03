@@ -13,7 +13,7 @@ legend{
 }
 
 #login{
-	height: 14em;	
+	height: 16em;	
 }
 
 
@@ -25,7 +25,7 @@ legend{
 	height: 13em;
 }
 
-textarea.add{
+textarea{
 	height: 8em;
 	width: 100%;
 }
@@ -42,13 +42,3 @@ input{
 	box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
 	}
 
-.grey-bubble{
-	background-color: #3A4349;
-	border-radius: .5em .5em;
-	box-shadow: 0px 0px 10px #000000;
-	top:0;
-	left:0;
-	padding: 0.5em 1.5em 0em 1.5em;
-	height: 100%;
-	width: auto;
-}

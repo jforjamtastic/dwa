@@ -1,20 +1,4 @@
-<p> You have been logged out, would you like to log back in?</p>
-
-
-<div id="login">
-	<div class="grey-bubble">
-		<h2>Log back in?</h2>
-		<form method='Post' action='/users/p_login'>
-		
-			email<br />
-			<input type='text' name='email'>
-			<br /><br />
-			password<br />
-			<input type='password' name='password'>
-			<br /><br />
-			
-			<input type='submit' value='login'>
-		
-		</form>
-	</div>
+<div id="logout-text">
+	<p> You have been logged out. </p>
+	<p> But, are you sure you wouldn't rather log back in?</p>
 </div>
