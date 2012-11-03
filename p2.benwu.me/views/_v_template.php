@@ -18,14 +18,14 @@
 	<link rel='stylesheet'
 		media='screen and (max-width: 640px)'
 		href='/css/mobile.css'/>
-		
+	<link rel="stylesheet" type="text/css" href="/css/forms.css"/>	
 	<!-- Controller Specific JS/CSS -->
 	<?php echo @$client_files; ?>
 	
 	<script type='text/javascript'>
 	$(document).ready(function() {
 		$("#menu").find("li").find("a[href='"+window.location.pathname+"']").each(function() {
-			$(this).closest("li").addClass('active');
+			$(this).parent().addClass('active');
 			console.log($(this).parent());
 			});
 		});
@@ -60,17 +60,9 @@
 		</div>
 		<div id="sidebar">
 			<?=$sidebar;?>
-			<p>test
-				test
-				test
-				test
-				test
-				test
-				test
-			</p>
 		</div>
 		<div id="footer">
-			<span> version .10</span>
+			<span> version .12</span>
 		</div>
 	</div>
 </body>

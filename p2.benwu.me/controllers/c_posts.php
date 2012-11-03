@@ -16,6 +16,7 @@ class posts_controller extends base_controller {
 	public function index(){
 		#set up view
 		$this->template->content = View::instance('v_posts_index');
+		$this->template->sidebar = View::instance('v_posts_add');
 		$this->template->title 	 = 'Posts';
 		
 		#connections
@@ -65,8 +66,8 @@ class posts_controller extends base_controller {
 		
 		DB::instance(DB_NAME)->insert('posts', $_POST);
 		
-		echo "Your post has been added. <a href='/posts/add'> Add another</a>";	
-	}
+		Router::redirect('/posts/');
+		}
 	
 	
 	

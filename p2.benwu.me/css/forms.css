@@ -1,34 +1,41 @@
+/***** 		FORMS		 *****/
+legend{
+	padding: .75em 0em 0em 0em;
+	font-family: 'Carrois Gothic SC', 'helvetica', arial, sans-serif;	
+	font-size: 1.8 em;	
+}
+
 #signup{
-	position: relative;
 	margin: 1em;
 	padding: 2em;
 	width: 18em;
 }
 
 #login{
-	position: relative;
 	margin: 1em;
 	padding: 2em;
 	width: 18em;	
 }
 
 
-
 #add-post{
-	position: relative;
-	margin: 1em;
-	padding: 2em;
-	width: 21em;
+	width: 90%;
+	margin: 1.5em 0em 0em 1em;
+	padding: 0em 1em 0em 1em;
+	max-width: 28em;
 	height: 13em;
 }
+
 textarea.add{
-	width: 24em;
-	height: 6em;
+	height: 8em;
+	width: 100%;
+}
+
+.submit {
 }
 
 input{
-	width: 16em;
-	text-align: center;
+	display:block;
 	border: 1px solid;
 	box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
 	}
@@ -36,10 +43,10 @@ input{
 .form-bubble{
 	background-color: #3A4349;
 	border-radius: .5em .5em;
-	box-shadow: 0px 0px 10px #626390;
+	box-shadow: 0px 0px 10px #000000;
 	top:0;
 	left:0;
-	padding: 0.5em 1em 0em 1em;
+	padding: 0.5em 1.5em 0em 1.5em;
 	height: 100%;
-	width: 100%;
+	width: auto;
 }
