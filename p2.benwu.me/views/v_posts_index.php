@@ -1,8 +1,8 @@
-<script>
+<!--<script>
 	$(document.ready(function (){
 		$('a[title="posts"]').addClass("active");
 	});
-</script>
+</script>-->
 
 <? foreach($posts as $key => $post): ?>
 	<div class='post'>

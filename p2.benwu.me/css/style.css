@@ -8,17 +8,18 @@ body {
 	background-color: #060F16;
 
 }
-/****** HEADERS ******/
+
+/***** HEADERS *****/
 #header{
 	height: 6em;
-	margin: 0;
+	margin: 0 0 1px 0;
 	padding: .5em 0em 0em 0em;
-/*background-color: #1A262F; 	background-color: ##1A262F; */
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#5C798E), to(#1A262F));
 	background-image: -webkit-linear-gradient(top, #5C798E, #1A262F); 
 	background-image:    -moz-linear-gradient(top, #5C798E, #1A262F);
 	background-image:     -ms-linear-gradient(top, #5C798E, #1A262F);
 	background-image:      -o-linear-gradient(top, #5C798E, #1A262F);
+	-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr=#5C798EFF, endColorstr=#1A262FFF)";
 	color:#ffffff;
 
 }
@@ -35,6 +36,7 @@ h1{
 
 #header a{
 	color:#ffffff;
+	text-decoration: none;
 	
 }
 
@@ -68,17 +70,61 @@ h1{
 	font-family: 'Carrois Gothic SC', 'helvetica', arial, sans-serif;	
 }
 
+#header li:hover, .active, #header li a:hover {
+	background-color: #2B2D30;
+	color: #0B0B22;
+
+	
+}
 
 
+/**** content ****/
 
 #content {
-	margin: 0em 2em 0em 2em;
+	width: 100%;
+	margin: 0em 2em 0em 0em;
 	font-family: 'Helvetica', arial, sans-serif;
 	color: #ffffff;
+	background-color: #2B2D30;
+
+	
+}
+
+#stream-side{
+	float: left;
+	height: 100%;
+	min-height: 48em;
+	width: 635px;
+	margin: 0;
+	background-color: #060F16;
+
+	
+	
+}
+
+#sidebar{
+	float: left;
+	height: 100%;
+	width: auto;
+	/*background-color: #2B2D30;*/
+	margin: 10px 0px 0px 0px;
+	
+	
+}
+#footer{
+	clear:both;
+	background: #ffffff;
+	text-align: right;
+	padding: 0em 1em 0em 0em;
+	
 }
 
 
 
+p{
+	line-height: 12pt;
+	
+}
 
 span{
 	color:#d16d20;
@@ -91,16 +137,19 @@ span{
 {
 	
 }
+
+
 /****** POSTS *******/
 .post {
 	min-height: 5em;
 	min-width: 18em;
-	max-width: 23em;
+	max-width: 75%;
 	margin: 2em 1em 1.5em 3em;
 
 }
 
 .glow-bubble{
+	background-color: rgb(104,126,142,); /*ie solid-color fallback */
 	background-color: rgba(104,126,142,.6);
 	border: solid thin white;
 	border-radius: .5em .5em;
@@ -114,16 +163,12 @@ span{
 	
 }
 
-p{
-	line-height: 12pt;
-	
-}
+
+
+/**** Timestamp style ****/
 .created{
 	text-align: right;
 	font-size: .8em;
-	
-	
-	
 }
 
 

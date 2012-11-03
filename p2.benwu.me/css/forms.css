@@ -32,3 +32,14 @@ input{
 	border: 1px solid;
 	box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
 	}
+
+.form-bubble{
+	background-color: #3A4349;
+	border-radius: .5em .5em;
+	box-shadow: 0px 0px 10px #626390;
+	top:0;
+	left:0;
+	padding: 0.5em 1em 0em 1em;
+	height: 100%;
+	width: 100%;
+}
