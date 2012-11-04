@@ -10,6 +10,9 @@ class index_controller extends base_controller {
 	Access via http://yourapp.com/index/index/
 	-------------------------------------------------------------------------------------------------*/
 	public function index() {
+	if (!$this->user){
+		
+		
 		
 		# Any method that loads a view will commonly start with this
 		# First, set the content of the template with a view file
@@ -27,7 +30,10 @@ class index_controller extends base_controller {
 	      		
 		# Render the view
 			echo $this->template;
-
+		}
+		else{
+			Router::redirect("/posts/");
+		}
 	}
 	
 	

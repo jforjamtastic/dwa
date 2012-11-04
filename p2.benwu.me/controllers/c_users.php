@@ -10,9 +10,6 @@ class users_controller extends base_controller {
 		if (!$this->user){
 			Router::redirect("/");	
 		}
-		else{
-			Router::redirect("/posts/");
-		}
 	}
 	
 	
