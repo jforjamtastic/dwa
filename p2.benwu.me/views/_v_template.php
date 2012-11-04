@@ -73,7 +73,7 @@
 			<?=$sidebar;?>
 		</div>
 		<div id="footer">
-			<span> version .50</span>
+			<span> version .60</span>
 		</div>
 	</div>
 </body>

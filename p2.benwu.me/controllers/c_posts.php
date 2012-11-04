@@ -82,23 +82,32 @@ class posts_controller extends base_controller {
 		$this->template->sidebar = View::instance("v_posts_users");
 		$this->template->title 	 = 'Follow';
 		
-		#connections
-			$q = "SELECT posts.*, users.first_name, users.last_name
-					FROM posts
-					LEFT JOIN users
-					ON posts.user_id = users.user_id
-					LEFT JOIN users_users
-					ON users.user_id = users_users.user_id_followed
-					ORDER BY posts.created DESC";
-							
+		$q = "SELECT posts.*, users.first_name, users.last_name
+				FROM posts
+				LEFT JOIN users
+				ON posts.user_id = users.user_id
+				ORDER BY posts.created DESC";
+		
+		
 		$posts = DB::instance(DB_NAME)->select_rows($q);
-		//print_r($posts);
 		$user_id = $this->user->user_id;
 		
-		#pass data to the view
 		$this->template->content->posts = $posts;
 		$this->template->content->user_id = $user_id;
+
+		#connections
+		$q = "SELECT posts.*, users.first_name, users.last_name
+				FROM posts
+				LEFT JOIN users
+				ON posts.user_id = users.user_id
+				LEFT JOIN users_users
+				ON users.user_id = users_users.user_id_followed
+				ORDER BY posts.created DESC";
+							
+		//print_r($posts);
 		
+		#pass data to the view
+			
 		//echo Debug::dump($user_id);
 		//echo Debug::dump($posts);
 		
