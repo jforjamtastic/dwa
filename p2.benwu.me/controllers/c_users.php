@@ -7,7 +7,7 @@ class users_controller extends base_controller {
 	}
 	
 	public function index() {
-		if (!$this->user{
+		if (!$this->user){
 			Router::redirect("/");	
 		}
 		else{
