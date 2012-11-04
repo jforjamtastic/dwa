@@ -105,23 +105,42 @@ class users_controller extends base_controller {
 		
 	}
 	
-	public function profile($user_name = NULL){
+	public function profile($user_id = NULL){
 		if(!$this->user){
 			echo "Members only";
 			return false;
 		}
 		
-		if ($user_name == NULL) {
+		if ($user_id == NULL) {
 			echo "you did not specify a user";
 		} 
 		else {		
 			# Create the view
-			$this->template->content = View::instance("v_users_profile");
-			$this->template->title = "Profile for ".$this->user-first_name;
+			$this->template->sidebar = View::instance("v_users_profile");
+			$this->template->content = View::instance("v_posts_profile");
 			
-			# Pass Content
-			//$this->template->content->user_name = $user_name;
+			$q = "SELECT users.*
+					FROM users
+					WHERE user_id = ".$user_id;
+				
+			$users = DB::instance(DB_NAME)->select_rows($q);
+
+			$q = "SELECT posts.*, users.first_name, users.last_name
+					FROM posts
+					LEFT JOIN users
+					ON posts.user_id = users.user_id
+					WHERE users.user_id = ".$user_id."
+					ORDER BY posts.created DESC";
+					
+			$posts = DB::instance(DB_NAME)->select_rows($q);
+
+			//echo "This is the profile for ".$user_id;
 			
+			//echo Debug::dump($users);
+			//echo Debug::dump($posts);
+			$this->template->content->posts = $posts;
+			$this->template->sidebar->users = $users;
+
 			# Render the View
 			echo $this->template;
 		}

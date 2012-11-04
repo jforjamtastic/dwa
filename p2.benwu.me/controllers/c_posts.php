@@ -49,8 +49,11 @@ class posts_controller extends base_controller {
 	public function add() {
 		# set up the view
 		$this->template->content = View::instance("v_posts_add");
+		$this->template->sidebar = View::instance(NULL);
 		$this->template->title = "Add a new post";
 		
+		$client_files = Array("/css/compose.css");
+		$this->template->client_files = Utils::load_client_files($client_files);
 		#render the view
 		echo $this->template;		
 	}
@@ -75,8 +78,29 @@ class posts_controller extends base_controller {
 	public function users(){
 		#controls who you follow
 		
-		#$this->template->content = View::instance("v_posts_following");	##	
+		$this->template->content = View::instance("v_posts_allposts");	
 		$this->template->sidebar = View::instance("v_posts_users");
+		$this->template->title 	 = 'Follow';
+		
+		#connections
+			$q = "SELECT posts.*, users.first_name, users.last_name
+					FROM posts
+					LEFT JOIN users
+					ON posts.user_id = users.user_id
+					LEFT JOIN users_users
+					ON users.user_id = users_users.user_id_followed
+					ORDER BY posts.created DESC";
+							
+		$posts = DB::instance(DB_NAME)->select_rows($q);
+		//print_r($posts);
+		$user_id = $this->user->user_id;
+		
+		#pass data to the view
+		$this->template->content->posts = $posts;
+		$this->template->content->user_id = $user_id;
+		
+		//echo Debug::dump($user_id);
+		//echo Debug::dump($posts);
 		
 		$q = "SELECT *
 			FROM users";

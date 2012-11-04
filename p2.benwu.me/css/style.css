@@ -71,7 +71,7 @@ h1{
 	font-family: 'Carrois Gothic SC', 'helvetica', arial, sans-serif;	
 }
 
-#header li:hover, .active, #header li a:hover {
+#header li:hover, #header li.active, #header li a:hover {
 	background-color: #575c63;
 	color: #0B0B22;
 
@@ -150,11 +150,11 @@ span{
 
 }
 .post{
-	margin: 2em 1em 1.5em 4em;
+	margin: 2em 1em 1.5em 4.5em;
 }
 .own-post{
 	margin: 0;	
-	margin: 2em 1em 1.5em 2em;
+	margin: 2em 1em 1.5em 1em;
 
 
 }
@@ -218,7 +218,7 @@ a:hover{
 }
 
 /*****		INTRO			*****/
-#intro-text, #logout-text, #signup-text {
+#intro-text, #logout-text, #signup-text, .sidebar-text {
 	padding: 1em;
 }
 

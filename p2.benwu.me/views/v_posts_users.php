@@ -12,3 +12,5 @@
 	<? endforeach; ?>
 	<br />
 </div>
+
+<p class='sidebar-text'> See some interesting posts in the Global Timeline? Why not follow the author? <p>

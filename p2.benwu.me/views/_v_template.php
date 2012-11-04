@@ -24,8 +24,8 @@
 	<?php echo @$client_files; ?>
 	
 	<script type='text/javascript'>
-	$(document).ready(function() {
-		$("#menu").find("li").find("a[href='"+window.location.pathname+"']").each(function() {
+	$(window).load(function() {
+		$("#menu ul li").find("a[href='"+window.location.pathname+"']").each(function() {
 			$(this).parent().addClass('active');
 			console.log($(this).parent());
 			});
@@ -36,6 +36,11 @@
     	$(".validate").validate();
     });
     </script>
+    <?php
+				$path = $_SERVER['PHP_SELF'];
+				$page = basename($path);
+				$page = basename($path, '.php');
+	?>
 	
 </head>
 
@@ -68,7 +73,7 @@
 			<?=$sidebar;?>
 		</div>
 		<div id="footer">
-			<span> version .23</span>
+			<span> version .30</span>
 		</div>
 	</div>
 </body>
