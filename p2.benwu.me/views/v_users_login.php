@@ -15,8 +15,7 @@
 				</div>
 				<br>
 			<? endif;?>	
-		</form>
-	
+		</form>	
 	</div>
 </div>
 <?=$subview?>
