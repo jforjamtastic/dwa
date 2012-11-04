@@ -78,7 +78,7 @@ class posts_controller extends base_controller {
 	public function users(){
 		#controls who you follow
 		
-		$this->template->content = View::instance("v_posts_allposts");	
+		$this->template->content = View::instance("v_posts_index");	
 		$this->template->sidebar = View::instance("v_posts_users");
 		$this->template->title 	 = 'Follow';
 		
@@ -122,8 +122,7 @@ class posts_controller extends base_controller {
 		
 	}
 	
-	
-	
+		
 	public function follow ($user_id_followed = NULL){
 		$data['created'] = Time::now();
 		$data['user_id'] = $this->user->user_id;
@@ -144,6 +143,22 @@ class posts_controller extends base_controller {
 		Router::redirect("/posts/users");
 	}
 	
+	public function entry ($entry_id = NULL){
+		$this->template->content = View::instance('v_posts_index');
+	
+		$q = "SELECT posts.*, users.first_name, users.last_name
+			FROM posts
+			LEFT JOIN users
+			ON posts.user_id = users.user_id
+			WHERE posts.post_id = ".$entry_id;
+		
+		$posts = DB::instance(DB_NAME)->select_rows($q);
+		$this->template->content->posts = $posts;
+		
+		echo $this->template;
+		
+		
+	}
 
 	
 }

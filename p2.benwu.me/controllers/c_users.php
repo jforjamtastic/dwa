@@ -13,17 +13,17 @@ class users_controller extends base_controller {
 	
 	
 	
-	public function signup() {
-		$this->template->content = View::instance("v_users_signup");
-		$this->template->sidebar = View::instance("v_login_text");
-
-		
-		$client_files = Array("/css/forms.css",
-								"http://ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.min.js");
-		$this->template->client_files = Utils::load_client_files($client_files);
-				
-		echo $this->template;
-
+	public function signup($error = NULL) {
+		if(!$this->user){
+			$this->template->content = View::instance("v_users_signup");
+			$this->template->content->error = $error;
+			$this->template->sidebar = View::instance("v_login_text");
+					
+			echo $this->template;
+			}
+		else {
+			Router: redirect('/posts/');
+		}
 	}
 	
 	public function p_signup(){
@@ -35,25 +35,39 @@ class users_controller extends base_controller {
 		$_POST['created'] = Time::now(); 								#this returned the time stamp
 		$_POST['modified']= Time::now(); 								#timestamp 
 		
-		#put the data into db
-		DB::instance(DB_NAME)->insert('users', $_POST); #inserts form data to DB
+		$q = "SELECT users.email
+				FROM users
+				WHERE users.email = '".$_POST['email']."'";
+			
+		$emails = DB::instance(DB_NAME)->select_rows($q);
 		
+		//echo Debug::dump ($emails);
+		
+		if($emails <> NULL){
+			Router::redirect("/users/signup/error");	
+			break;
+		}
+	
+		DB::instance(DB_NAME)->insert('users', $_POST); #inserts form data to DB
+
 		Router::redirect("/users/login/");
+
+		
+		
+		#put the data into db
 		
 		
 	}
 	
-	public function login() {
+	public function login($error = NULL) {
 		if(!$this->user){
-		$this->template->content = View::instance("v_users_login");
-		$this->template->sidebar = View::instance("v_signup_text");
-		
-		$client_files = Array("/css/forms.css","http://ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.min.js");
-		$this->template->client_files = Utils::load_client_files($client_files);
-		
-		
-		echo $this->template;	
-		}
+			$this->template->content = View::instance("v_users_login");
+			$this->template->content->error = $error;
+			$this->template->sidebar = View::instance("v_signup_text");
+			
+			
+			echo $this->template;	
+			}
 		else {
 			Router::redirect('/posts/');
 		}
@@ -73,7 +87,7 @@ class users_controller extends base_controller {
 		$token = DB::instance(DB_NAME)->select_field($q);
 		
 		if ($token == ""){
-			Router::redirect("/users/login");
+			Router::redirect("/users/login/error");
 		}
 		else{
 			setcookie("token", $token, strtotime('+2 weeks'), "/");
@@ -96,11 +110,6 @@ class users_controller extends base_controller {
 		
 		setcookie("token", "", strtotime('-1 year'), '/');
 		
-
-		
-		$client_files = Array("/css/forms.css","http://ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.min.js");
-		$this->template->client_files = Utils::load_client_files($client_files);
-		
 		echo $this->template;
 		
 	}
@@ -117,7 +126,7 @@ class users_controller extends base_controller {
 		else {		
 			# Create the view
 			$this->template->sidebar = View::instance("v_users_profile");
-			$this->template->content = View::instance("v_posts_profile");
+			$this->template->content = View::instance("v_posts_index");
 			
 			$q = "SELECT users.*
 					FROM users

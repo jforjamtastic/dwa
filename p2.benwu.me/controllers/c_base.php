@@ -24,7 +24,7 @@ class base_controller {
 								
 		# So we can use $user in views			
 			$this->template->set_global('user', $this->user);
-			$this->template->set_global('user_id', $this->user->user_id);
+			//$this->template->set_global('user_id', $this->user->user_id);
 			
 	}
 	

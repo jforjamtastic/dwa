@@ -8,8 +8,14 @@
 			password<br />
 			<input type='password' class='required' name='password'>
 			<br /><br />
-			
 			<input type='submit' value='login' class='submit'>
+			<? if($error): ?>
+				<div class='error'>
+					<p> Login failed. </p>
+				</div>
+				<br>
+			<? endif;?>
+
 		
 		</form>
 		

@@ -163,6 +163,11 @@ h4{
 	font-family: 'Carrois Gothic SC', 'helvetica', arial, sans-serif;	
 	font-weight: 400;
 	color:#d16d20;
+	margin: 0;
+	padding: 0;
+
+}
+.own-post h4{
 	text-align: right;
 
 }
@@ -196,13 +201,18 @@ a:hover{
 	text-decoration: underline;
 }
 
+#user-list a.following-link {
+	color: #ffffff;
+}
+
 
 /*****		TIMESTAMP		*****/
 
 
-.created{
-	text-align: right;
+.created {
 	font-size: .8em;
+	color: #ffffff;
+	text-align: right;
 }
 
 

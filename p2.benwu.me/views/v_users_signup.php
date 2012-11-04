@@ -20,8 +20,14 @@
 			<br /><br />
 			
 			<input type='submit' value='submit' class='submit'>
+			
 			<br /><br />
-		
+			<? if($error): ?>
+				<div class='error'>
+					<p> Signup failed. Email already used </p>
+				</div>
+				<br>
+			<? endif;?>
 		
 		</form>
 	</div>

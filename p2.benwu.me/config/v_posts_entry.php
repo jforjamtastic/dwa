@@ -4,7 +4,7 @@
 <? }
 
 else  {?>
-	<h2 class=""> The Global Timeline</h2>
+
 	<? foreach($posts as $key => $post): ?>
 		<? if ($post['user_id'] == $user_id){?>
 			<div class="own-post">
@@ -13,9 +13,10 @@ else  {?>
 			<div class='post'>
 		<? } ?>
 			<div class="glow-bubble">
+		
 				<h4><a href="/users/profile/<?=$post['user_id']?>"><?=$post['first_name']?> <?=$post['last_name']?></a></h4>
 				<p class='text'><?=$post['content']?></p>
-				<p class='created'><?= Time::display($post['created'], null, 'America/New_York')?></p>
+				<p><a class='created' href="/posts/entry<?=$post['post_id']?>"><?= Time::display($post['created'], null, 'America/New_York')?></a></p>
 			</div>
 		</div>
 		
