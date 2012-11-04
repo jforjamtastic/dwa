@@ -27,7 +27,7 @@ class users_controller extends base_controller {
 			echo $this->template;
 			}
 		else {
-			Router: redirect('/posts/');
+			Router::redirect('/posts/');
 		}
 	}
 	
