@@ -14,11 +14,9 @@
 					<p> Login failed. </p>
 				</div>
 				<br>
-			<? endif;?>
-
-		
+			<? endif;?>	
 		</form>
-		
+	
 	</div>
 </div>
 <?=$subview?>

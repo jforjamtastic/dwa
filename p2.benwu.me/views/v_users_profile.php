@@ -5,11 +5,3 @@
 	<? endforeach; ?>
 	<br />
 </div>
-
-
-
-
-
-
-<!--<h2>Profile</h2>
-<h2></h2>-->

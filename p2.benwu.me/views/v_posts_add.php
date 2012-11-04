@@ -1,9 +1,3 @@
-<script>
-	$(document).ready(function(){
-    	$(".validate").validate();
-    });
-</script>
-
 <div id="add-post">
 	<div class="grey-bubble">
 		<form method='POST' class='validate' action='/posts/p_add'>

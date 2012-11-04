@@ -1,6 +1,6 @@
 <div id="signup">	
 	<div class='grey-bubble'>
-		<form method='Post' class='validate' action='/users/p_signup'>
+		<form method='Post' class='validate-signup' action='/users/p_signup'>
 		
 			<h2>Signup</h2>
 			<label for='first_name'>First Name</label><br />
@@ -20,14 +20,14 @@
 			<br /><br />
 			
 			<input type='submit' value='submit' class='submit'>
-			
-			<br /><br />
 			<? if($error): ?>
 				<div class='error'>
 					<p> Signup failed. Email already used </p>
 				</div>
 				<br>
 			<? endif;?>
+			<br /><br />
+		
 		
 		</form>
 	</div>

@@ -34,13 +34,12 @@
 	<script>
 	$(document).ready(function(){
     	$(".validate").validate();
+    	$("#validate-signup").validate();
     });
     </script>
-    <?php
-				$path = $_SERVER['PHP_SELF'];
-				$page = basename($path);
-				$page = basename($path, '.php');
-	?>
+   
+	
+  
 	
 </head>
 
@@ -73,7 +72,7 @@
 			<?=$sidebar;?>
 		</div>
 		<div id="footer">
-			<span> version .70</span>
+			<span> version .80</span>
 		</div>
 	</div>
 </body>
