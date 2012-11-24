@@ -5,8 +5,9 @@
 	<title><?=@$title; ?></title>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="stylesheet" media="all" href="/css/style.css"/>	
-	<link rel="stylesheet" media="all" href="/css/jquery-jvectormap.css"/>
+	<link rel="stylesheet" media="screen" href="/css/style.css"/>	
+	<link rel="stylesheet" media="screen" href="/css/jquery-jvectormap.css"/>
+	<link rel="stylesheet" media="screen" href="/css/jquery-ui-1.9.2.custom.min.css"/>
 	
 	<!-- JS -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>

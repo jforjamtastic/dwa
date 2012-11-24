@@ -23,7 +23,15 @@ class index_controller extends base_controller {
 			$client_files = Array(
 						""
 	                    );
-	    
+	                    
+	        $q = "SELECT *
+	        		FROM total_population";
+	        		
+	        $mapData = DB::instance(DB_NAME)->select_rows($q);
+	        
+	        //echo Debug::dump($mapData); 
+	        
+	        $this->template->content->mapData = $mapData;
 	    	$this->template->client_files = Utils::load_client_files($client_files);   
 	      		
 		# Render the view

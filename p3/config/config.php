@@ -19,7 +19,7 @@ If you want a different default time format for this app, set it below
 
 # When email is sent out from the server, where should it come from?
 # Ideally, this should match the domain name
-	define('APP_EMAIL', 'webmaster@p3.benwu.me'); 
+	define('APP_EMAIL', 'webmaster@benwu.me'); 
 
 /* 
 A email designated to receive messages from the server. Examples:
@@ -32,7 +32,7 @@ A email designated to receive messages from the server. Examples:
 	define('SYSTEM_EMAIL', 'webmaster@benwu.me'); 
 
 # Default DB name for this app
-	define('DB_NAME', "myapp_com"); 
+	define('DB_NAME', "benwume_p3"); 
 
 # Timezone
 	define('TIMEZONE', 'America/New_York');

@@ -10,8 +10,12 @@ h1, h2 {
 	border-bottom: 1px solid black;
 }
 
+h3{
+	margin: 0;
+}
+
 #header{
-	background-color: #660000;
+	background-color: #A60000;
 	margin: 0em 10em 0em 0em;
 	padding: 1em 1em 1em 1em;
 	width: 100%;
@@ -26,11 +30,15 @@ h1, h2 {
 	
 }
 
+#content{
+	margin-left: 10px;
+}
+
 #clear-button{
 	font-family: sans-serif;
 	position: absolute;
-	left: 10px;
-	top: 152px;
+	left: 697px;
+	top: 112px;
 	-webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
@@ -42,4 +50,26 @@ h1, h2 {
     cursor: pointer;
     line-height: 10px;
     text-align: center;
+}
+
+#slider, #year-output{
+	float: left;
+}
+
+#slider {
+	clear: right;
+	width: 280px; 
+	margin: 10px;
+	color: black;
+	border: solid 1px black;
+}
+#year-output{
+	color: #ff0000;
+	margin: 5px 18px 5px 325px;
+	font-size: 20pt;
+}
+p{
+	clear: both;
+	margin: 0;
+	color: black;
 }

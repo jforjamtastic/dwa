@@ -19,4 +19,21 @@ $(document).ready(function() {
 		map.reset();
 			
 	});		
+	
+	var val = 2010;
+	
+	$("#slider").slider({
+		value: val,
+		min: 1790,
+		max: 2010,
+		step: 10,
+		slide: function (event, ui) {
+			var year = ui.value;
+			$('#year-output').html(ui.value);
+		}
+	});
+	
+	var mapData = <?php echo $mapData ?>;
+	console.log(mapData);
+	
 });														//ends the ready function
