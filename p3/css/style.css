@@ -1,7 +1,45 @@
 body {
 	width: 800px;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	color: white;
 	
 }
 h1, h2 {
 	border-bottom: 1px solid black;
+}
+
+#header{
+	background-color: #660000;
+	margin: 0em 10em 0em 0em;
+	padding: 1em 1em 1em 1em;
+	width: 100%;
+}
+
+#header h2{
+	text-align: center;
+	text-decoration: none;
+	font-variant: small-caps;
+}
+#map{
+	
+}
+
+#clear-button{
+	font-family: sans-serif;
+	position: absolute;
+	left: 10px;
+	top: 152px;
+	-webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background: #292929;
+    padding: 3px;
+    color: white;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    line-height: 10px;
+    text-align: center;
 }
