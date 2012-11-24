@@ -33,7 +33,5 @@ $(document).ready(function() {
 		}
 	});
 	
-	var mapData = <?php echo $mapData ?>;
-	console.log(mapData);
 	
 });														//ends the ready function
