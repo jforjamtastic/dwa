@@ -16,7 +16,7 @@
 	  		<table id="poptable">
 		  		<caption>Population by Year</caption>
 		  		<thead>
-		  			<th id='state'>State</th>		  			
+		  			<th>State</th>		  			
 		  			<th id='1790'>1790</th>
 		  			<th id='1800'>1800</th>
 		  			<th id='1810'>1810</th>
