@@ -26,8 +26,8 @@ h3{
 	text-decoration: none;
 	font-variant: small-caps;
 }
-#map{
-	
+#poptable{
+	/*display: none;*/
 }
 
 #content{
@@ -59,14 +59,15 @@ h3{
 
 #slider {
 	clear: right;
-	width: 280px; 
-	margin: 10px;
+	width: 460px; 
+	margin: 20px 0px 20px 0px;
 	border: solid 1px black;
+
 }
 #year-output{
 	color: #ff0000;
-	margin: 5px 18px 5px 325px;
-	font-size: 20pt;
+	margin: -8px 0px 0px 175px;
+	font-size: 22pt;
 }
 table{
 	clear: both;

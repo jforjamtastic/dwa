@@ -7,9 +7,9 @@
 	  
 	  
 	  <div id="slider-box">
+	  	  	<div id="slider"></div><br />
 	  		<h3 id="year-output">2010</h3>
 
-	  		<div id="slider"></div><br />
 	  </div>
 	  
 	  <div>

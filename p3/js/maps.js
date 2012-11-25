@@ -1,37 +1,52 @@
 $(document).ready(function() {
-	var val = 2010;
-	var n = 2;
-	console.log((val - 1790)/10);
+	var year = 1790;										//sets initial year
+	var n = 1;												//sets initial column number to pull from	
+	var population = {};									//creates object for population totals
+	var minPop;
+	var maxPop;
+	var col = [];
+
 	
-	var obj = {};
-   	$('#poptable').find('tbody tr').each(function(){ 	
-	   		$td = $(this).find('td'),
-	   		key = $td.eq(0).text(),
-	   		val = parseInt($td.eq(n).text()); 	
-	   		obj[key] = val;
+   function test(x){
+   	$('#poptable').find('tbody tr').each(function(){ 		//function pulls data from html table to 
+	   		$td = $(this).find('td'),						//create an object in the correct format for 
+	   		key = $td.eq(0).text(),							//jvectormap
+	   		val = parseInt($td.eq(x).text());
+	   		col.push(val); 	
+	   		population[key] = val;
 	   		
 	});
-	//console.log(obj);   	
-	   
-
-
+	console.log(population);  							//test code to see population contents
+	};
+	test(n);
 	
+	
+	
+	
+	Array.max = function (array){
+		return Math.max.apply(Math, array);
+	}
+	console.log(Array.max(col));
+	 
 	$('#map').vectorMap({
 		map: 'us_aea_en',										//renders us aea map
 		zoomStep: "1.2",										//sets the amount zoomed
-		regionsSelectable: 'true',
-		regionsSelectableOne: 'true',
-		onRegionSelected: function(event, code){
+		regionsSelectable: 'true',								//allows states to be clickable
+		regionsSelectableOne: 'true',							//limites to only one state
+		onRegionSelected: function(event, code){				//function to zoom in on clicked state
 			var stateCode = $('#map').vectorMap('get', 'mapObject').getSelectedRegions(code);
 			$('#map').vectorMap("set", "focus", String(stateCode));
 			
-			console.log(stateCode);
+			//console.log(stateCode);
 		},
 		series:{
 			regions: [{
-				values: obj,			
-				scale: ['#FFFFFF', '#08519C'],
-				attribute: 'fill'
+				scale: ['#DEEBF7', '#08519C'],
+				attribute: 'fill',				
+				values: population,
+				min: 0,		
+				max: Array.max(col), 
+
 				
 			}]
 		}
@@ -43,23 +58,29 @@ $(document).ready(function() {
 
 
 	$('#clear-button').click(function(){
-		map.clearSelectedRegions();
-		map.reset();
+		map.clearSelectedRegions();								//deselects state
+		map.reset();											//resets zoom and removes year
+		$('#year-output').html('');								//deletes year indicator
 		
 	});		
 	
-	
 	$("#slider").slider({
-		value: val,
+		value: year,
 		min: 1790,
 		max: 2010,
 		step: 10,
 		slide: function (event, ui) {
 			$('#year-output').html(ui.value);
-			n = (ui.value-1790)/10;
-			console.log(n);
+			n = (ui.value-1780)/10;
+			col = [];
+			test(n);
+			map.series.regions[0].setValues(population);
+
+			console.log(population);
+			console.log(Array.max(col));
 		}
 	});
+
 	
 	
 });														//ends the ready function
