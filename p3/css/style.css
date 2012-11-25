@@ -32,6 +32,7 @@ h3{
 
 #content{
 	margin-left: 10px;
+	color: black;
 }
 
 #clear-button{
@@ -60,7 +61,6 @@ h3{
 	clear: right;
 	width: 280px; 
 	margin: 10px;
-	color: black;
 	border: solid 1px black;
 }
 #year-output{
@@ -68,8 +68,7 @@ h3{
 	margin: 5px 18px 5px 325px;
 	font-size: 20pt;
 }
-p{
+table{
 	clear: both;
 	margin: 0;
-	color: black;
 }
