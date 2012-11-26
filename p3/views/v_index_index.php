@@ -9,6 +9,7 @@
 	  
 	  
 	  <div id="slider-box">
+	  		<span id='caption'>US POPULATION BY DECADE</span>
 	  	  	<div id="slider"></div><br />
 	  		<h3 id="year-output">2010</h3>
 
@@ -33,7 +34,7 @@
 	  	  <a href="#" id="table-reveal">Click here to see the underlying table behind the map!</a>
 
 	 <div>
-	  		<table id="poptable">
+	  		<table id="poptable" class="tablesorter">
 		  		<caption>Population by Year</caption>
 		  		<thead>
 		  			<th>State</th>		  			

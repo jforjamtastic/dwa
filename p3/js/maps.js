@@ -124,5 +124,7 @@ $(document).ready(function() {
 		$(this).html("click to hide");
 		$('#poptable').toggle();
 	});
+	
+	$("table.tablesorter").tablesorter({widgets: ['zebra']});
 
 });														//ends the ready function
