@@ -22,8 +22,9 @@
 </head>
 
 <body>	
-	<?=$header;?>
-	<?=$content;?> 
-
+	<div id="wrapper">
+		<?=$header;?>
+		<?=$content;?> 
+	</div>
 </body>
 </html>

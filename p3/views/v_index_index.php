@@ -1,9 +1,11 @@
- <div id="content">    
-      <div id="map" style="width: 708px; height: 400px" class="jvectormap jvectormap-aea" data-projection="aea" data-name="us_aea_en"></div>
+
+ <div id="content">  
+ 		<div id="map" style="width: 708px; height: 400px" class="jvectormap jvectormap-aea" data-projection="aea" data-name="us_aea_en"></div>
 	  
 	  <div id="clear-button">
 	  		<span>x</span>
 	  </div>
+	  
 	  
 	  
 	  <div id="slider-box">
@@ -11,8 +13,16 @@
 	  		<h3 id="year-output">2010</h3>
 
 	  </div>
-	  
-	  <div>
+	 
+	  	  
+ </div>
+ 
+ <div id="sidebar">
+ 	 <div id="statefactsbox">
+	 	 <h2>State of</h2>
+	 	 
+ 	 </div>
+ 	 <div>
 	  		<table id="poptable">
 		  		<caption>Population by Year</caption>
 		  		<thead>
@@ -73,6 +83,11 @@
 			  		<? endforeach; ?>
 		  		</tbody>
 	  		</table>
-	  		
+	  	
+ 	
 	  </div>
+
+ </div>
+ <div id="footer">
+ 	<footer>this page is powered by mamp, jquery, and jvectormap. Copyright 2012</footer>
  </div>
