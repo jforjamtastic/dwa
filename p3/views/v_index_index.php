@@ -13,16 +13,26 @@
 	  		<h3 id="year-output">2010</h3>
 
 	  </div>
-	 
-	  	  
- </div>
- 
- <div id="sidebar">
- 	 <div id="statefactsbox">
-	 	 <h2>State of</h2>
-	 	 
- 	 </div>
- 	 <div>
+	  <div id="description">
+	  		<p> 
+	  		Welcome to the early implementation of this interactive map.
+	  		The goal is to eventually provide many diverse sources of 
+	  		demographic and social information about the United States.
+	  		Currently there's only a little bit of seed data available.
+	  		So enjoy what's here and maybe there will be more shortly. 
+	  		</p>
+	  		
+	  		<p>
+	  		All of the underlying data has been obtained from the <a href="census.gov">U.S. Census 
+	  		Bureau</a>, and this site is powered by <a href="jquery.com">jquery</a>, 
+	  		<a href="jqueryui.com"> jquery ui</a>, and <a href="jvectormap.com">jvectormap</a> 
+	  		and handcrafted pixels. Special thanks to everyone who has committed to those projects
+	  		</p>
+	  		
+	  </div>
+	  	  <a href="#" id="table-reveal">Click here to see the underlying table behind the map!</a>
+
+	 <div>
 	  		<table id="poptable">
 		  		<caption>Population by Year</caption>
 		  		<thead>
@@ -83,10 +93,24 @@
 			  		<? endforeach; ?>
 		  		</tbody>
 	  		</table>
-	  	
- 	
 	  </div>
-
+	  	  
+ </div>
+ 
+ <div id="sidebar">
+ 	 <div id="statefactsbox">
+ 	 	<h2></h2>
+	 	 <p>fighting with the american fact finder left me little time to obtain enough 
+		 	 data, but in the future I hope to fill this out with factoids about each state.
+	 	 </p>
+	 	 <ul>
+	 	 	<li>capitals</li>
+	 	 	<li>founding</li>
+	 	 	<li>state mottos/animals/etc</li>
+	 	 	<li>and anything else that might fit</li>
+	 	 <ul>
+ 	 </div>
+ 	 
  </div>
  <div id="footer">
  	<footer>this page is powered by mamp, jquery, and jvectormap. Copyright 2012</footer>

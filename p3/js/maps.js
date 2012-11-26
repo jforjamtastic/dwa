@@ -54,7 +54,7 @@ $(document).ready(function() {
 			$('#map').vectorMap("set", "focus", String(stateCode));
 			$('#statefactsbox').css("display","block")
 			var name = $('#map').vectorMap('get', 'mapObject').getRegionName(code);
-			$('#statefactsbox').html("<h2>"+name+"</h2>");		//reveals statefacts box
+			$('#statefactsbox').find('h2').html(name);		//reveals statefacts box
 			
 
 			
@@ -119,6 +119,10 @@ $(document).ready(function() {
 			
 
 		}
+	});
+	$("#table-reveal").click(function(){
+		$(this).html("click to hide");
+		$('#poptable').toggle();
 	});
 
 });														//ends the ready function
