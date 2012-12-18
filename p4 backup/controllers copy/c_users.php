@@ -7,27 +7,30 @@ class users_controller extends base_controller {
 	}
 	
 	public function index() {
-		if (!$this->user){
-			Router::redirect("/");	
-		}
+		//if (!$this->user){
+		//	Router::redirect("/");	
+		//}
 	}
 	
 
 	
 	public function signup($error = NULL) {
-		if(!$this->user){
+		//if(!$this->user){
 			$this->template->content = View::instance("v_users_signup");
 			$this->template->content->error = $error;
 			$this->template->sidebar = View::instance("v_login_text");
 					
 			echo $this->template;
-			}
-		else {
-			Router::redirect('/posts/');
-		}
+		//	}
+		//else {
+	//		Router::redirect('/');
+	//	}
 	}
 	
 	public function p_signup(){
+		#what data was printed
+		//print_r($_POST);
+		
 		$_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']); 	#hashes password
 		$_POST['token'] = sha1(TOKEN_SALT.$_POST['email'].Utils::generate_random_string());
 		$_POST['created'] = Time::now(); 								#this returned the time stamp
@@ -61,13 +64,13 @@ class users_controller extends base_controller {
 		if(!$this->user){
 			$this->template->content = View::instance("v_users_login");
 			$this->template->content->error = $error;
-			$this->template->sidebar = View::instance("v_signup_text");
+			//$this->template->sidebar = View::instance("v_signup_text");
 			
 			
 			echo $this->template;	
 			}
 		else {
-			Router::redirect('/');
+			Router::redirect('/posts/');
 		}
 	}
 	
@@ -110,46 +113,5 @@ class users_controller extends base_controller {
 		
 		echo $this->template;
 		
-	}
-	
-	public function profile($user_id = NULL){
-		if(!$this->user){
-			echo "Members only";
-			return false;
-		}
-		
-		if ($user_id == NULL) {
-			echo "you did not specify a user";
-		} 
-		else {		
-			# Create the view
-			$this->template->sidebar = View::instance("v_users_profile");
-			$this->template->content = View::instance("v_posts_index");
-			
-			$q = "SELECT users.*
-					FROM users
-					WHERE user_id = ".$user_id;
-				
-			$users = DB::instance(DB_NAME)->select_rows($q);
-
-			$q = "SELECT posts.*, users.first_name, users.last_name
-					FROM posts
-					LEFT JOIN users
-					ON posts.user_id = users.user_id
-					WHERE users.user_id = ".$user_id."
-					ORDER BY posts.created DESC";
-					
-			$posts = DB::instance(DB_NAME)->select_rows($q);
-
-			//echo "This is the profile for ".$user_id;
-			
-			//echo Debug::dump($users);
-			//echo Debug::dump($posts);
-			$this->template->content->posts = $posts;
-			$this->template->sidebar->users = $users;
-
-			# Render the View
-			echo $this->template;
-		}
 	}	
 }

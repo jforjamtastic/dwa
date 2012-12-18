@@ -16,18 +16,21 @@ class users_controller extends base_controller {
 	
 	public function signup($error = NULL) {
 		if(!$this->user){
+			$this->template->header = View::instance('v_header');
 			$this->template->content = View::instance("v_users_signup");
 			$this->template->content->error = $error;
-			$this->template->sidebar = View::instance("v_login_text");
-					
+
 			echo $this->template;
 			}
 		else {
-			Router::redirect('/posts/');
+			Router::redirect('/');
 		}
 	}
 	
 	public function p_signup(){
+		#what data was printed
+		//print_r($_POST);
+		
 		$_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']); 	#hashes password
 		$_POST['token'] = sha1(TOKEN_SALT.$_POST['email'].Utils::generate_random_string());
 		$_POST['created'] = Time::now(); 								#this returned the time stamp
@@ -59,15 +62,15 @@ class users_controller extends base_controller {
 	
 	public function login($error = NULL) {
 		if(!$this->user){
-			$this->template->content = View::instance("v_users_login");
+			$this->template->header = View::instance('v_header');
+			$this->template->content = View::instance('v_users_login');
 			$this->template->content->error = $error;
-			$this->template->sidebar = View::instance("v_signup_text");
 			
 			
 			echo $this->template;	
 			}
 		else {
-			Router::redirect('/');
+			Router::redirect('/posts/');
 		}
 	}
 	
@@ -96,8 +99,9 @@ class users_controller extends base_controller {
 	}
 	
 	public function logout() {
+		$this->template->header = View::instance('v_header');
 		$this->template->content = View::instance("v_users_login");
-		$this->template->sidebar = View::instance("v_users_logout");
+		//$this->template->sidebar = View::instance("v_users_logout");
 
 		
 		$new_token = sha1(TOKEN_SALT.$this->user->email.Utils::generate_random_string());

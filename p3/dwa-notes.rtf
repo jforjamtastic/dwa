@@ -1,0 +1,79 @@
+12/5/2012
+
+AJAX
+
+asynchronous - can be done behind the scene after a page is loaded
+javascript- xmlhttprequest
+xml exentsible markup language
+	can now also be JSON
+	
+
+Two Approaches 
+Jquery
+
+reverser.php -> includes jquery
+
+jquery.ajax
+$(document).ready(function({
+
+	$.ajax({
+		type: 'POST',
+		url: 'processor.php',
+		success: function(response){
+		
+		},
+		data: {
+			first_name: $('#first_name').val();
+		}
+		
+		
+	});
+});
+
+
+
+
+jquery plugin option
+ajax form plugin
+
+$(document).ready(function(){
+	var options	= {
+		beforeSend: function(){
+			$('#results').html('loading…')
+		}.
+		type: "Post',
+		url: 'processor.php",
+		success: function(response){
+			$('#results').html(response);
+		}
+	};
+	
+	$('#reverser').ajaxForm(options)
+
+});
+
+
+Give users visual feedback.
+
+google for ajax loaders.
+
+
+JSON
+
+in php
+
+echo json_encode(array)
+
+
+
+
+
+Cron
+* * * * *
+minute (0-59)
+hour (0-23)
+day of month (1-31)
+month (1-12)
+day of week (0-6)
+
+0 16 * * * every day at 4 pm
