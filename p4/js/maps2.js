@@ -1,10 +1,10 @@
 $(document).ready(function () {
 
-    var year = 2008;
+    var year = 2006;
     
-    var val = 2008;
+    var val = 2006;
 
-    var dataFileName = 'veterans';
+    var dataFileName = 'vetPercent';
     var temp = 0;
         
     init = function (year) {
@@ -44,30 +44,12 @@ $(document).ready(function () {
 				},
 				onRegionLabelShow: function(event, label, code){
 					console.log(code);
-
-					/*
-					$.ajax({
-						type: 'POST',
-						url: '/maps/p_statepop',
-						success: function(response) {
-							saveThisVar(response);	
-			
-						},
-						data: {
-							table: "veterans",
-							state: code,
-							year: val
-						},
-						
-					});	*/
 				
-					if( dataFileName == 'veterans'){
 						label.html(
 							''+label.html()+''+
-							'<br/> Precent of Veterans: '+data.states[val][code]+'%'
+							'<br/> Percent: '+data.states[val][code]+'%'
 						);
-					};
-													
+																		
 				}
 				
 			});
@@ -85,9 +67,7 @@ $(document).ready(function () {
 
     init(year);
     
-    saveThisVar = function (response){
-	    temp = response;
-    };
+   
     	
 	
 	$("#slider").slider({
@@ -157,12 +137,15 @@ $(document).ready(function () {
 			type: 'POST',
 			url: "/maps/p_save/",
 			beforeSubmit: function() {
-				$('#caption').toggle();
 			},
 			
 			success: function(response) {
-				$('#caption').toggle();
+				if( response == "saved"){
+					$('#saves').append(
+						"<option value="+dataFileName+","+year+">"+dataFileName+" - "+year+"</option>");
+					}
 			},
+			
 			data: {
 				tablename:""+dataFileName,
 				year: year

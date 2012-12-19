@@ -11,8 +11,18 @@
 	  <div id="dropdowns">
 	  <form name="datachooser" id="datachooser">
 	  		<select name="data">
-	  		<option value="total_population">US Population by Decade </option>
-	  		<option value="veterans">Percentage of Veterans</option>
+	  		<option value="vetPercent">Percentage of Veterans</option>
+	  		<optgroup label="Highest Educational Attainment" id="educationattainment">
+	  			<option value="lessthannine">Students who drop out before 9th Grade</option>
+	  			<option value="ninetotwelve">Students who drop out between 9th-12th</option>
+	  			<option value="highschoolgrad">High School Graduates</option>
+	  			<option value="somecollege">Some College</option>
+	  			<option value="associates">Associates Degree</option>
+	  			<option value="bachelors">Bachelor's Degree</option>
+	  			<option value="graduate">Graduate or Higher</option>
+	  			<option value="atleasthigh">Graduated at least High School</option>
+	  			<option value="atleastbachelor">Graduated with at least a Bachelors</option>	  		
+	  		</optgroup>
 	  		</select>
 	  		
 	  		<input type="submit" value="select">
@@ -22,23 +32,24 @@
 	  	if ($user) { ?>
 	  		<button id="save-btn" class="rightdrop">save</button>
 
+	  		<form name ="saved" id="saved" class="rightdrop">
 		  	<? if ($saved) { ?>
-		  	<form name ="saved" class="rightdrop">
-		  		<select name ="saves" id="saves">
+		  	
+		  		<select name ="saves" id="saves" > 
 		  		<? foreach($saved as $key => $saved): ?>
-		  		<option value='<?=$saved['tablename']?>,<?=$saved['year']?>'> <?=$saved['tablename']?> - <?=$saved['year']?></option>
+		  			<option value='<?=$saved['tablename']?>,<?=$saved['year']?>'> <?=$saved['tablename']?> - <?=$saved['year']?></option>
 		  		<? endforeach?>
 		  		</select>
+		  	<? }?>
 		  	</form>
-		  <? }?>
-		  
+
 	  <? }?>
 	  </div>	
 	  
 	  <div id="slider-box">
 	  		
 	  	  	<div id="slider"></div><br />
-	  		<h3 id="year-output">2008</h3>
+	  		<h3 id="year-output">2006</h3>
 
 	  </div>
 	  <div id="description">

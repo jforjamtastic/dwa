@@ -22,7 +22,6 @@ class maps_controller extends base_controller {
 			$_POST['user_id'] = $this->user->user_id;
 			$_POST['created'] = Time::now();
 			$_POST['modified'] = Time::now();	
-			print_r($_POST);
 			
 			$q = "SELECT saves.user_id, saves.tablename, saves.year
 				FROM saves
@@ -62,37 +61,83 @@ class maps_controller extends base_controller {
 	}	
 	
 	public function p_data (){
-		//print_r($_POST);
 		$data = array();
-
-
 		$temp = $_POST['data'];
-		for( $i = 2006; $i < 2010 ; $i++){
+		//print_r($temp);
+
 		
-			$q = "SELECT state, vetPercent from ".$_POST['data']."
+		for( $i = 2006; $i < 2010 ; $i++){
+
+			if ($temp == 'vetPercent'){
+				$q = "SELECT state, vetPercent from veterans
 					WHERE veterans.year = ".$i."
 					ORDER BY veterans.state";
-		
-		
+			}
+			else if ($temp == 'ninetotwelve'){
+				$q = "SELECT state, ninetotwelve from educationalattainment
+					WHERE educationalattainment.year = ".$i."
+					ORDER BY educationalattainment.state";
+			}
+			
+			else if ($temp == 'lessthannine'){
+				$q = "SELECT state, lessthannine from educationalattainment
+					WHERE educationalattainment.year = ".$i."
+					ORDER BY educationalattainment.state";
+			}
+			
+			else if ($temp == 'highschoolgrad'){
+				$q = "SELECT state, highschoolgrad from educationalattainment
+					WHERE educationalattainment.year = ".$i."
+					ORDER BY educationalattainment.state";
+			}
+			
+			else if ($temp == 'somecollege'){
+				$q = "SELECT state, somecollege from educationalattainment
+					WHERE educationalattainment.year = ".$i."
+					ORDER BY educationalattainment.state";
+			}
+			
+			else if ($temp == 'associates'){
+				$q = "SELECT state, associates from educationalattainment
+					WHERE educationalattainment.year = ".$i."
+					ORDER BY educationalattainment.state";
+			}
+			
+			else if ($temp == 'bachelors'){
+				$q = "SELECT state, bachelors from educationalattainment
+					WHERE educationalattainment.year = ".$i."
+					ORDER BY educationalattainment.state";
+			}
+			else if ($temp == 'graduate'){
+				$q = "SELECT state, graduate from educationalattainment
+					WHERE educationalattainment.year = ".$i."
+					ORDER BY educationalattainment.state";
+			}
+			else if ($temp == 'atleasthigh'){
+				$q = "SELECT state, atleasthigh from educationalattainment
+					WHERE educationalattainment.year = ".$i."
+					ORDER BY educationalattainment.state";
+			}
+			else if ($temp == 'atleastbachelor'){
+				$q = "SELECT state, atleastbachelor from educationalattainment
+					WHERE educationalattainment.year = ".$i."
+					ORDER BY educationalattainment.state";
+			}
+			
+			
 			$test = DB::instance(DB_NAME)->select_rows($q);
-			//$data['state'][$i] = $test;
 
+			//print_r($test);
 			for ($j = 0; $j < 50; $j++)
 			{
 				$state = $test[$j]['state'];
-				$data['states'][$i][$state] = $test[$j]['vetPercent'];
-				//print_r("".$test[$j][state].":".$test[$j][vetPercent]);
+				$data['states'][$i][$state] = $test[$j][$temp];
 				
 			}
-			//print_r ($data);
-
 			
 		}
-	
-	
-		
 
-		$fp = fopen('json/'.$temp.'.json', 'w');
+	$fp = fopen('json/'.$temp.'.json', 'w');
 		fwrite($fp, json_encode($data, JSON_NUMERIC_CHECK));
 		fclose($fp);
 		
