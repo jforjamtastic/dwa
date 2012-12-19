@@ -8,82 +8,37 @@
 	  		
 	  </div>
 	  <span id='caption'>CHANGING...</span>
-	  
-	  <form name="datachooser">
+	  <div id="dropdowns">
+	  <form name="datachooser" id="datachooser">
 	  		<select name="data">
-	  		<option name='type' value="total_population">US Population by Decade </option>
-	  		<option name='type' value="veterans">Percentage of Veterans</option>
+	  		<option value="total_population">US Population by Decade </option>
+	  		<option value="veterans">Percentage of Veterans</option>
 	  		</select>
 	  		
 	  		<input type="submit" value="select">
 	  </form>
 	  
-<!--	  <script type='text/javascript'>
+	  <?
+	  	if ($user) { ?>
+	  		<button id="save-btn" class="rightdrop">save</button>
 
-		var options = {
-			type: 'POST',
-			url: '/maps/p_data/',
-			beforeSubmit: function() {
-				$('#caption').toggle();
-			},
-			success: function(response) {
-				console.log(response);
-				//var temp = $.parseJSON(response);
-				//console.log(temp);
-				$('#results').html(function(){
-			  
-					$.getJSON('/json/veterans.json', function(data){
-			    		var val = 2009;
-				        statesValues = jvm.values.apply({}, jvm.values(data)),
-				        console.log(statesValues);
-				
-				   
-					    $('#map').vectorMap({
-					      	map: 'us_aea_en',
-					      	series: {
-					        	regions: [{
-						        	scale: ['#DEEBF7', '#08519C'],
-						        	attribute: 'fill',
-						        	min: jvm.min(statesValues),
-						        	max: jvm.max(statesValues)
-						        }]
-						    },
-					     });
-				   
-				   
-					     var mapObject = $('#map').vectorMap('get', 'mapObject');
-				
-					     $("#slider").slider({
-						     value: val,
-						     min: 2005,
-						     max: 2009,
-						     step: 1,
-						     slide: function( event, ui ) {
-							     val = ui.value;
-							     mapObject.series.regions[0].setValues(data[ui.value]);
-							 }
-						 });
-				     });
-				});
-				
-				
-				$('#caption').toggle();
-				
-				
-
-			}
-		}
-		$('form[name=datachooser]').ajaxForm(options);
-		
-		</script> -->
-		
-	  <div id="results">
-	  </div>
+		  	<? if ($saved) { ?>
+		  	<form name ="saved" class="rightdrop">
+		  		<select name ="saves" id="saves">
+		  		<? foreach($saved as $key => $saved): ?>
+		  		<option value='<?=$saved['tablename']?>,<?=$saved['year']?>'> <?=$saved['tablename']?> - <?=$saved['year']?></option>
+		  		<? endforeach?>
+		  		</select>
+		  	</form>
+		  <? }?>
+		  
+	  <? }?>
+	  </div>	
 	  
 	  <div id="slider-box">
 	  		
 	  	  	<div id="slider"></div><br />
-	  		<h3 id="year-output"></h3>
+	  		<h3 id="year-output">2008</h3>
 
 	  </div>
 	  <div id="description">
@@ -103,71 +58,8 @@
 	  		</p>
 	  		
 	 </div>
-	  	  <a href="#" id="table-reveal">Click here to see the underlying table behind the map!</a>
 
-	 <div>
-	  		<table id="poptable" class="tablesorter">
-		  		<caption>Population by Year</caption>
-		  		<thead>
-		  			<th>State</th>		  			
-		  			<th id='1790'>1790</th>
-		  			<th id='1800'>1800</th>
-		  			<th id='1810'>1810</th>
-		  			<th id='1820'>1820</th>
-		  			<th id='1830'>1830</th>
-		  			<th id='1840'>1840</th>
-		  			<th id='1850'>1850</th>
-		  			<th id='1860'>1860</th>
-		  			<th id='1870'>1870</th>
-		  			<th id='1880'>1880</th>
-		  			<th id='1890'>1890</th>
-		  			<th id='1900'>1900</th>
-		  			<th id='1910'>1910</th>
-		  			<th id='1920'>1920</th>
-		  			<th id='1930'>1930</th>
-		  			<th id='1940'>1940</th>
-		  			<th id='1950'>1950</th>
-		  			<th id='1960'>1960</th>
-		  			<th id='1970'>1970</th>
-		  			<th id='1980'>1980</th>
-		  			<th id='1990'>1990</th>
-		  			<th id='2000'>2000</th>
-		  			<th id='2010'>2010</th>
-		  		</thead>
-		  		<tbody>
-			  		<? foreach($mapData as $key => $mapData): ?>
-			  		<tr>
-			  			<td><?=$mapData['regioncode']?></td>			  			
-			  			<td><?=$mapData['1790']?></td>			  		
-			  			<td><?=$mapData['1800']?></td>
-			  			<td><?=$mapData['1810']?> </td>
-			  			<td><?=$mapData['1820']?> </td>
-			  			<td><?=$mapData['1830']?> </td>
-			  			<td><?=$mapData['1840']?> </td>
-			  			<td><?=$mapData['1850']?> </td>
-			  			<td><?=$mapData['1860']?> </td>
-			  			<td><?=$mapData['1870']?> </td>
-			  			<td><?=$mapData['1880']?> </td>
-			  			<td><?=$mapData['1890']?> </td>
-			  			<td><?=$mapData['1900']?> </td>
-			  			<td><?=$mapData['1910']?> </td>
-			  			<td><?=$mapData['1920']?> </td>
-			  			<td><?=$mapData['1930']?> </td>
-			  			<td><?=$mapData['1940']?> </td>
-			  			<td><?=$mapData['1950']?> </td>
-			  			<td><?=$mapData['1960']?> </td>
-			  			<td><?=$mapData['1970']?> </td>
-			  			<td><?=$mapData['1980']?> </td>
-			  			<td><?=$mapData['1990']?> </td>
-			  			<td><?=$mapData['2000']?> </td>
-			  			<td><?=$mapData['2010']?> </td>
-
-			  		</tr>
-			  		<? endforeach; ?>
-		  		</tbody>
-	  		</table>
-	  </div>
-	  	  
+		  	  
  </div>
  
  <div id="sidebar">

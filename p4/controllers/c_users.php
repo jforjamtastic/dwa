@@ -70,7 +70,7 @@ class users_controller extends base_controller {
 			echo $this->template;	
 			}
 		else {
-			Router::redirect('/posts/');
+			Router::redirect('/');
 		}
 	}
 	
@@ -92,7 +92,7 @@ class users_controller extends base_controller {
 		}
 		else{
 			setcookie("token", $token, strtotime('+2 weeks'), "/");
-			Router::redirect("/posts/");
+			Router::redirect("/");
 			
 		}
 	

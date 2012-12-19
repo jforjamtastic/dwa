@@ -31,15 +31,27 @@ class index_controller extends base_controller {
 			
 			);
 	                    
-	        $q = "SELECT *
+	        /*$q = "SELECT *
 	        		FROM total_population";
 	        		
 	        $mapData = DB::instance(DB_NAME)->select_rows($q);
 	        
 	        //echo Debug::dump($mapData); 
 	        
-	        $this->template->content->mapData = $mapData;
+	        $this->template->content->mapData = $mapData;*/
+	        
+	        $user = $this->user;
+	        
+	        if ($user <> NULL){
+		        $q = "SELECT saves.* FROM saves
+				WHERE saves.user_id = ".$this->user->user_id."";
+				
+				$saved = DB::instance(DB_NAME)->select_rows($q);
+				$this->template->content->saved = $saved;
+			}
 	    	$this->template->client_files = Utils::load_client_files($client_files);   
+	      		
+	      	
 	      		
 		# Render the view
 			echo $this->template;

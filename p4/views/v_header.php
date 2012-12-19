@@ -6,8 +6,8 @@
 			<li><a href="/users/signup" title="signup">signup</a></li>
 			<? } 
 			else {?>
-			
-			<li>logged in as: <a href="/users/logout" title="logout">signout</a></li>
+			logged in as: <?=$user->first_name?>
+			<li><a href="/users/logout" title="logout">signout</a></li>
 			
 			<? } ?>
 			
