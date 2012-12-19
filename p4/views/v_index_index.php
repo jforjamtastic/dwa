@@ -18,7 +18,7 @@
 	  		<input type="submit" value="select">
 	  </form>
 	  
-	  <script type='text/javascript'>
+<!--	  <script type='text/javascript'>
 
 		var options = {
 			type: 'POST',
@@ -27,16 +27,55 @@
 				$('#caption').toggle();
 			},
 			success: function(response) {
-		
-
+				console.log(response);
+				//var temp = $.parseJSON(response);
+				//console.log(temp);
+				$('#results').html(function(){
+			  
+					$.getJSON('/json/veterans.json', function(data){
+			    		var val = 2009;
+				        statesValues = jvm.values.apply({}, jvm.values(data)),
+				        console.log(statesValues);
+				
+				   
+					    $('#map').vectorMap({
+					      	map: 'us_aea_en',
+					      	series: {
+					        	regions: [{
+						        	scale: ['#DEEBF7', '#08519C'],
+						        	attribute: 'fill',
+						        	min: jvm.min(statesValues),
+						        	max: jvm.max(statesValues)
+						        }]
+						    },
+					     });
+				   
+				   
+					     var mapObject = $('#map').vectorMap('get', 'mapObject');
+				
+					     $("#slider").slider({
+						     value: val,
+						     min: 2005,
+						     max: 2009,
+						     step: 1,
+						     slide: function( event, ui ) {
+							     val = ui.value;
+							     mapObject.series.regions[0].setValues(data[ui.value]);
+							 }
+						 });
+				     });
+				});
+				
+				
 				$('#caption').toggle();
-			
+				
+				
 
 			}
-		};
+		}
 		$('form[name=datachooser]').ajaxForm(options);
 		
-		</script> 
+		</script> -->
 		
 	  <div id="results">
 	  </div>
@@ -44,7 +83,7 @@
 	  <div id="slider-box">
 	  		
 	  	  	<div id="slider"></div><br />
-	  		<h3 id="year-output">2010</h3>
+	  		<h3 id="year-output"></h3>
 
 	  </div>
 	  <div id="description">
@@ -63,7 +102,7 @@
 	  		and handcrafted pixels. Special thanks to everyone who has committed to those projects
 	  		</p>
 	  		
-	  </div>
+	 </div>
 	  	  <a href="#" id="table-reveal">Click here to see the underlying table behind the map!</a>
 
 	 <div>
@@ -99,29 +138,29 @@
 			  		<? foreach($mapData as $key => $mapData): ?>
 			  		<tr>
 			  			<td><?=$mapData['regioncode']?></td>			  			
-			  			<td><?=$mapData['y1790']?></td>			  		
-			  			<td><?=$mapData['y1800']?></td>
-			  			<td><?=$mapData['y1810']?> </td>
-			  			<td><?=$mapData['y1820']?> </td>
-			  			<td><?=$mapData['y1830']?> </td>
-			  			<td><?=$mapData['y1840']?> </td>
-			  			<td><?=$mapData['y1850']?> </td>
-			  			<td><?=$mapData['y1860']?> </td>
-			  			<td><?=$mapData['y1870']?> </td>
-			  			<td><?=$mapData['y1880']?> </td>
-			  			<td><?=$mapData['y1890']?> </td>
-			  			<td><?=$mapData['y1900']?> </td>
-			  			<td><?=$mapData['y1910']?> </td>
-			  			<td><?=$mapData['y1920']?> </td>
-			  			<td><?=$mapData['y1930']?> </td>
-			  			<td><?=$mapData['y1940']?> </td>
-			  			<td><?=$mapData['y1950']?> </td>
-			  			<td><?=$mapData['y1960']?> </td>
-			  			<td><?=$mapData['y1970']?> </td>
-			  			<td><?=$mapData['y1980']?> </td>
-			  			<td><?=$mapData['y1990']?> </td>
-			  			<td><?=$mapData['y2000']?> </td>
-			  			<td><?=$mapData['y2010']?> </td>
+			  			<td><?=$mapData['1790']?></td>			  		
+			  			<td><?=$mapData['1800']?></td>
+			  			<td><?=$mapData['1810']?> </td>
+			  			<td><?=$mapData['1820']?> </td>
+			  			<td><?=$mapData['1830']?> </td>
+			  			<td><?=$mapData['1840']?> </td>
+			  			<td><?=$mapData['1850']?> </td>
+			  			<td><?=$mapData['1860']?> </td>
+			  			<td><?=$mapData['1870']?> </td>
+			  			<td><?=$mapData['1880']?> </td>
+			  			<td><?=$mapData['1890']?> </td>
+			  			<td><?=$mapData['1900']?> </td>
+			  			<td><?=$mapData['1910']?> </td>
+			  			<td><?=$mapData['1920']?> </td>
+			  			<td><?=$mapData['1930']?> </td>
+			  			<td><?=$mapData['1940']?> </td>
+			  			<td><?=$mapData['1950']?> </td>
+			  			<td><?=$mapData['1960']?> </td>
+			  			<td><?=$mapData['1970']?> </td>
+			  			<td><?=$mapData['1980']?> </td>
+			  			<td><?=$mapData['1990']?> </td>
+			  			<td><?=$mapData['2000']?> </td>
+			  			<td><?=$mapData['2010']?> </td>
 
 			  		</tr>
 			  		<? endforeach; ?>

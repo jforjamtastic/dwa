@@ -27,7 +27,7 @@ class index_controller extends base_controller {
 				"/js/jquery-jvectormap-1.1.1.min.js",
 				"/js/jquery-jvectormap-us-aea-en.js",
 				"/js/jquery.form.js",
-				"/js/maps.js"
+				"/js/maps2.js"
 			
 			);
 	                    
