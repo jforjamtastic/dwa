@@ -194,7 +194,7 @@ $(document).ready(function () {
 
 		}
 	};
-	$('form[name='custom']').ajaxForm(custoptions);
+	$('form[name=custom]').ajaxForm(custoptions);
 	
 		
 
