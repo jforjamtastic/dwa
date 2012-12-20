@@ -15,6 +15,6 @@
 	</div>
 
 
-	<h2>Interactive Map</h2>
+	<h2><a href="/">Interactive Map</a></h2>
 	
 </div>

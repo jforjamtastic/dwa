@@ -179,7 +179,7 @@ $(document).ready(function () {
 		});	
 	});
 	
-	var custoptions = {
+	/*var custoptions = {
 		type: 'POST',
 		url: '/maps/p_custom',
 		
@@ -194,7 +194,7 @@ $(document).ready(function () {
 
 		}
 	};
-	$('form[name=custom]').ajaxForm(custoptions);
+	$('form[name=custom]').ajaxForm(custoptions);*/
 	
 		
 

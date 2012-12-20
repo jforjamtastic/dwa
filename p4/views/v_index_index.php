@@ -56,11 +56,12 @@
 	 
 	  <div id="description">
 	  		<p> 
-	  		Welcome to the early implementation of this interactive map.
-	  		The goal is to eventually provide many diverse sources of 
-	  		demographic and social information about the United States.
-	  		Currently there's only a little bit of seed data available.
-	  		So enjoy what's here and maybe there will be more shortly. 
+	  		Welcome to the second implementation of this interactive map.
+	  		much of it has been be rewritten since last we spoke!
+	  		The system is now capable of switched datasets and
+	  		to save searches that the user likes. Unfortunately not everything is quite ready
+	  		yet. The best example is <a href='/maps/custom'>custom maps</a> which ended up
+	  		being quite hard to implement.
 	  		</p>
 	  		
 	  		<p>
