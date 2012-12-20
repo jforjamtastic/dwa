@@ -37,9 +37,10 @@
 	
 		  		<form name ="saved" id="saved">
 			  		<legend>Saved</legend>
+			  		<select name ="saves" id="saves" >
 			  	<? if ($saved) { ?>
 			  	
-			  		<select name ="saves" id="saves" > 
+			  		 
 			  		<? foreach($saved as $key => $saved): ?>
 			  			<option value='<?=$saved['tablename']?>,<?=$saved['year']?>'> <?=$saved['tablename']?> - <?=$saved['year']?></option>
 			  		<? endforeach?>
