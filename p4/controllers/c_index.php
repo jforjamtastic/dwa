@@ -41,11 +41,14 @@ class index_controller extends base_controller {
 	        
 	        $user = $this->user;
 	        
+	        //if there is a user, grab their saves.
 	        if ($user <> NULL){
 		        $q = "SELECT saves.* FROM saves
 				WHERE saves.user_id = ".$this->user->user_id."";
 				
 				$saved = DB::instance(DB_NAME)->select_rows($q);
+				
+				//sending the values to the view
 				$this->template->content->saved = $saved;
 			}
 	    	$this->template->client_files = Utils::load_client_files($client_files);   

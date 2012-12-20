@@ -11,7 +11,7 @@ class maps_controller extends base_controller {
 	
 	}
 	
-	
+	//this function reads in a post and saves it to the database.
 	public function p_save (){
 		if (!$this->user)
 		{
@@ -23,6 +23,7 @@ class maps_controller extends base_controller {
 			$_POST['created'] = Time::now();
 			$_POST['modified'] = Time::now();	
 			
+			//query finds and previous times this user might have saved their query before.
 			$q = "SELECT saves.user_id, saves.tablename, saves.year
 				FROM saves
 				WHERE saves.tablename = '".$_POST['tablename']."'
@@ -31,6 +32,7 @@ class maps_controller extends base_controller {
 			
 			$dupes = DB::instance(DB_NAME)->select_rows($q);
 			
+			//if there are no matches in the query, save the data as a new row in saves
 			if ($dupes == NULL){
 				DB::instance(DB_NAME)->insert("saves", $_POST);
 				echo "saved";
@@ -43,6 +45,7 @@ class maps_controller extends base_controller {
 	}
 	
 	
+	//this is i believe a no longer used function, investigate for deletion
 	public function p_statepop (){
 		
 		$temp = $_POST['table'];
@@ -61,6 +64,7 @@ class maps_controller extends base_controller {
 	}	
 	
 	
+	//this method calls  facts in the database for a state
 	public function p_fetchfacts (){
 		$temp = $_POST['state'];
 		
@@ -98,12 +102,13 @@ class maps_controller extends base_controller {
 		
 	}
 	
+	//this method changes the dataset.
 	public function p_data (){
 		$data = array();
 		$temp = $_POST['data'];
 		//print_r($temp);
 
-		
+		//reads in which dataset is being changed to and iterates through each of the years.
 		for( $i = 2006; $i < 2010 ; $i++){
 
 			if ($temp == 'vetPercent'){
@@ -166,6 +171,7 @@ class maps_controller extends base_controller {
 			$test = DB::instance(DB_NAME)->select_rows($q);
 
 			//print_r($test);
+			//jvectormap requires a specific formated json, so here we are formating with a for loop
 			for ($j = 0; $j < 50; $j++)
 			{
 				$state = $test[$j]['state'];
@@ -174,16 +180,17 @@ class maps_controller extends base_controller {
 			}
 			
 		}
-
+		//opens the file and saves the current $data to it.
 		$fp = fopen('json/'.$temp.'.json', 'w');
 		fwrite($fp, json_encode($data, JSON_NUMERIC_CHECK));
 		fclose($fp);
 		
-
+		//echos back the name of the dataset so the view can render it
 		echo $temp;
 
 	}
 	
+	//creates the view for unfinished /maps/custom
 	public function custom (){
 		$this->template->header = View::instance('v_header');
 		$this->template->content = View::instance("v_maps_custom");
@@ -199,6 +206,7 @@ class maps_controller extends base_controller {
 		
 	}
 	
+	//unfinished method that did a lot of crazy things.
 	public function p_custom (){
 		if (!$this->user)
 		{
@@ -239,6 +247,7 @@ class maps_controller extends base_controller {
 			fwrite($fp, json_encode($data, JSON_NUMERIC_CHECK));
 			fclose($fp);		
 			
+			//almost have the contents perfect, still needs work.
 			$contents = file_get_contents('json/'.$new.'.json');
 			$new_contents = str_replace('_', '-', $contents);
 			file_put_contents('json/'.$new.'.json', $new_contents);

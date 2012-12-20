@@ -1,3 +1,4 @@
+//this is the old version of the maps.js file
 $(document).ready(function() {
 	var year = 2010;									//sets initial decade
 	var n = 23;											//sets initial column number to data	

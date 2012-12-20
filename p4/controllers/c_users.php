@@ -36,7 +36,6 @@ class users_controller extends base_controller {
 	
 	public function p_signup(){
 		#what data was printed
-		//print_r($_POST);
 		
 		$_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']); 	#hashes password
 		$_POST['token'] = sha1(TOKEN_SALT.$_POST['email'].Utils::generate_random_string());
