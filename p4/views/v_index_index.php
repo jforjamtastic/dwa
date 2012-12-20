@@ -44,8 +44,9 @@
 			  		<? foreach($saved as $key => $saved): ?>
 			  			<option value='<?=$saved['tablename']?>,<?=$saved['year']?>'> <?=$saved['tablename']?> - <?=$saved['year']?></option>
 			  		<? endforeach?>
-			  		</select>
+			  		
 			  	<? }?>
+			  		</select>
 			  	</form>
 			  	<button id="save-btn" class="rightdrop">save</button>
 	
