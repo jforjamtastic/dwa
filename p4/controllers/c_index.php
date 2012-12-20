@@ -23,7 +23,6 @@ class index_controller extends base_controller {
 		# If this view needs any JS or CSS files, add their paths to this array so they will get loaded in the head
 			$client_files = Array(
 				"/css/jquery-jvectormap.css",
-				"/css/tablecss/red/style.css",
 				"/js/jquery-jvectormap-1.1.1.min.js",
 				"/js/jquery-jvectormap-us-aea-en.js",
 				"/js/jquery.form.js",

@@ -1,23 +1,27 @@
 $(document).ready(function () {
 
-    var year = 2006;
+    var year = 2009;
     
-    var val = 2006;
+    var val = 2009;
 
     var dataFileName = 'vetPercent';
     var temp = 0;
         
     init = function (year) {
+    	$('#year-output').html(year);
+    	
 
         $.getJSON('/json/'+ dataFileName + '.json', function(data){
             
             val = year,
                 statesValues = jvm.values.apply({}, jvm.values(data.states));
+            
+            
 
             map = new jvm.WorldMap({
                 map: 'us_aea_en',
                 container: $('#map'),								//identifies the container
-
+                zoomOnScroll: 'false',
                 regionsSelectable: 'true',							//allows states to be clickable
 				regionsSelectableOne: 'true', 
                 series: {
@@ -40,6 +44,29 @@ $(document).ready(function () {
 					//this ensures that the h2 in the statefactbox includes the correct state name
 					var name = $('#map').vectorMap('get', 'mapObject').getRegionName(code);
 					$('#statefactsbox').find('h2').html(name);	
+					
+					$.ajax({
+						type: 'POST',
+						url: "/maps/p_fetchfacts/",
+						beforeSubmit: function() {
+						},
+			
+						success: function(response) {
+							console.log(response);
+							var resp = $.parseJSON(response);
+							console.log(resp['capital']);
+							$('#statefactcontent').html(
+								"Statehood - "+resp['statehood']+"<br/>"+ 
+								"Capital - "+resp['capital']+"<br/>"+
+								"Capital Since - "+ resp['capitalyear']+"<br/>"+
+								"Area of "+resp['capital']+" - "+resp['area']+" miles<br/>"+
+								"<p>Random Notes - " +resp['notes']+"</p>"		
+							);
+						},
+						data: {
+							state: code,
+						}
+					});
 
 				},
 				onRegionLabelShow: function(event, label, code){
@@ -60,7 +87,7 @@ $(document).ready(function () {
 				$('#statefactsbox').css("display","none");			//hides statefacts box
 
 		
-	});
+			});
 
 		});
 	};
@@ -85,11 +112,9 @@ $(document).ready(function () {
 			$('.jvectormap-label').remove();
 			
 
-			init(val);
-			
-
-			
-		}
+			init(val);			
+		},
+		
 	});
 
 
@@ -153,6 +178,24 @@ $(document).ready(function () {
 
 		});	
 	});
+	
+	var custoptions = {
+		type: 'POST',
+		url: '/maps/p_custom',
+		
+		success: function(response) {
+			dataFileName = response;	
+			$('#map').off().empty();
+			$('.jvectormap-label').remove();			
+
+			init(1000);
+			
+			
+
+		}
+	};
+	$('form[name='custom']').ajaxForm(custoptions);
+	
 		
 
 

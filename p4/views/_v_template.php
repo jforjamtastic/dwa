@@ -13,6 +13,7 @@
 	<!-- JS -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+	<script src="//ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
 	
 				
 	<!-- Controller Specific JS/CSS -->

@@ -19,6 +19,13 @@ class users_controller extends base_controller {
 			$this->template->header = View::instance('v_header');
 			$this->template->content = View::instance("v_users_signup");
 			$this->template->content->error = $error;
+			
+			$client_files = Array(
+				"/js/validate.js"
+			
+			);
+			
+			$this->template->client_files = Utils::load_client_files($client_files);   
 
 			echo $this->template;
 			}
@@ -66,6 +73,12 @@ class users_controller extends base_controller {
 			$this->template->content = View::instance('v_users_login');
 			$this->template->content->error = $error;
 			
+			$client_files = Array(
+				"/js/validate.js"
+			
+			);
+			
+			$this->template->client_files = Utils::load_client_files($client_files);
 			
 			echo $this->template;	
 			}
@@ -101,7 +114,12 @@ class users_controller extends base_controller {
 	public function logout() {
 		$this->template->header = View::instance('v_header');
 		$this->template->content = View::instance("v_users_login");
-		//$this->template->sidebar = View::instance("v_users_logout");
+		$client_files = Array(
+				"/js/validate.js"
+			
+			);
+			
+		$this->template->client_files = Utils::load_client_files($client_files);
 
 		
 		$new_token = sha1(TOKEN_SALT.$this->user->email.Utils::generate_random_string());
@@ -116,44 +134,5 @@ class users_controller extends base_controller {
 		
 	}
 	
-	public function profile($user_id = NULL){
-		if(!$this->user){
-			echo "Members only";
-			return false;
-		}
-		
-		if ($user_id == NULL) {
-			echo "you did not specify a user";
-		} 
-		else {		
-			# Create the view
-			$this->template->sidebar = View::instance("v_users_profile");
-			$this->template->content = View::instance("v_posts_index");
-			
-			$q = "SELECT users.*
-					FROM users
-					WHERE user_id = ".$user_id;
-				
-			$users = DB::instance(DB_NAME)->select_rows($q);
-
-			$q = "SELECT posts.*, users.first_name, users.last_name
-					FROM posts
-					LEFT JOIN users
-					ON posts.user_id = users.user_id
-					WHERE users.user_id = ".$user_id."
-					ORDER BY posts.created DESC";
-					
-			$posts = DB::instance(DB_NAME)->select_rows($q);
-
-			//echo "This is the profile for ".$user_id;
-			
-			//echo Debug::dump($users);
-			//echo Debug::dump($posts);
-			$this->template->content->posts = $posts;
-			$this->template->sidebar->users = $users;
-
-			# Render the View
-			echo $this->template;
-		}
-	}	
+	
 }
